@@ -3,9 +3,13 @@
 <package format="3">
   <name>trover_slam</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>SLAM configuration for trover robot</description>
   <maintainer email="noah.ginzburg@gmail.com">noah</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache-2.0</license>
+
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

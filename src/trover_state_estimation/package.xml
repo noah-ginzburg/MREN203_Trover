@@ -3,11 +3,16 @@
 <package format="3">
   <name>trover_state_estimation</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>State estimation for trover robot</description>
   <maintainer email="noah.ginzburg@gmail.com">noah</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache-2.0</license>
 
-  <depend>rclpy</depend>
+  <exec_depend>robot_localization</exec_depend>
+  <exec_depend>nav2_map_server</exec_depend>
+  <exec_depend>nav2_amcl</exec_depend>
+  <exec_depend>nav2_lifecycle_manager</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

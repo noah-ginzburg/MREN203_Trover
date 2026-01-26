@@ -9,20 +9,23 @@ ekf_filter_node:
     base_link_frame: base_link
     world_frame: odom
 
-    odom0: /wheel_odom
+    # Odometry from diff_drive plugin
+    odom0: /odom
     odom0_config:
-      [true, true, false,
-       false, false, true,
-       true, false, false,
-       false, false, true,
-       false, false, false]
+      [false, false, false,    # position (x, y, z) 
+       false, false, false,    # orientation (roll, pitch, yaw) 
+       true,  true,  false,    # linear velocity (vx, vy, vz) 
+       false, false, true,     # angular velocity (vroll, vpitch, vyaw)
+       false, false, false]    # linear acceleration (ax, ay, az) 
 
-    imu0: /imu
+    # IMU sensor
+    imu0: /imu/data
+    # Same config matrix format as above
     imu0_config:
-      [false, false, false,
-       false, false, true,
-       false, false, false,
-       false, false, true,
-       false, false, false]
+      [false, false, false,    # position - IMU doesn't provide position
+       false, false, true,     # orientation - fuse yaw from IMU
+       false, false, false,    # linear velocity - IMU doesn't provide velocity
+       false, false, true,     # angular velocity - fuse vyaw from IMU
+       false, false, false]    # linear acceleration - not using (can cause drift)
 
     imu0_remove_gravitational_acceleration: true

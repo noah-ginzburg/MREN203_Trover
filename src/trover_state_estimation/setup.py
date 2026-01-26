@@ -1,3 +1,5 @@
+import os
+from glob import glob
 from setuptools import find_packages, setup
 
 package_name = 'trover_state_estimation'
@@ -10,13 +12,16 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        (os.path.join('share', package_name, 'maps'), glob('maps/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='noah',
     maintainer_email='noah.ginzburg@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='State estimation for trover robot',
+    license='Apache-2.0',
     extras_require={
         'test': [
             'pytest',

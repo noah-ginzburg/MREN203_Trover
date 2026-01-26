@@ -3,7 +3,7 @@
 <package format="3">
   <name>trover_description</name>
   <version>0.0.0</version>
-  <description>TODO: URDF description of the sentry</description>
+  <description>URDF description and Gazebo simulation for the trover robot</description>
   <maintainer email="noah.ginzburg@gmail.com">noah</maintainer>
   <license>Apache-2.0</license>
 
@@ -27,6 +27,11 @@
   <!-- Launch -->
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
+
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
