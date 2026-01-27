@@ -53,7 +53,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         gazebo,
-        global_localization,
+        #global_localization,
         local_localization,
         slam_toolbox,
         navigation,

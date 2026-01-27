@@ -32,18 +32,6 @@
   <xacro:property name="lidar_z" value="${ground_clearance + chassis_height + 0.06985}"/>
 
   <!-- ===================== -->
-  <!-- BASE FOOTPRINT (dummy link for KDL) -->
-  <!-- ===================== -->
-
-  <link name="base_footprint"/>
-
-  <joint name="base_joint" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
-
-  <!-- ===================== -->
   <!-- CHASSIS -->
   <!-- ===================== -->
 
@@ -123,8 +111,8 @@
 
     <gazebo reference="${name}">
       <material>Gazebo/FlatBlack</material>
-      <mu1>1.2</mu1>
-      <mu2>1.2</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
     </gazebo>
   </xacro:macro>
 
@@ -168,13 +156,12 @@
     <child link="front_left_wheel"/>
     <origin xyz="${wheel_x_offset} ${wheel_y_offset} ${wheel_z}"/>
     <axis xyz="0 1 0"/>
-    <mimic joint="rear_left_wheel_joint"/>
   </joint>
 
   <gazebo reference="front_left_wheel">
     <material>Gazebo/FlatBlack</material>
-    <mu1>1.2</mu1>
-    <mu2>1.2</mu2>
+    <mu1>0.001</mu1>
+    <mu2>0.001</mu2>
   </gazebo>
 
   <link name="front_right_wheel">
@@ -209,13 +196,12 @@
     <child link="front_right_wheel"/>
     <origin xyz="${wheel_x_offset} -${wheel_y_offset} ${wheel_z}"/>
     <axis xyz="0 1 0"/>
-    <mimic joint="rear_right_wheel_joint"/>
   </joint>
 
   <gazebo reference="front_right_wheel">
     <material>Gazebo/FlatBlack</material>
-    <mu1>1.2</mu1>
-    <mu2>1.2</mu2>
+    <mu1>0.001</mu1>
+    <mu2>0.001</mu2>
   </gazebo>
 
   <!-- ===================== -->
@@ -331,6 +317,7 @@
 
   <gazebo>
     <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <!-- 2WD: rear wheel drive only -->
       <left_joint>rear_left_wheel_joint</left_joint>
       <right_joint>rear_right_wheel_joint</right_joint>
       <wheel_separation>${2 * wheel_y_offset}</wheel_separation>  

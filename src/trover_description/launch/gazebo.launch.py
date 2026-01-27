@@ -3,6 +3,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, SetEnvironmentVariable
 from launch.substitutions import LaunchConfiguration, Command
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
@@ -10,7 +11,7 @@ def generate_launch_description():
 
     urdf_path = os.path.join(pkg_description, 'urdf', 'trover_description.urdf.xacro')
     world_path = os.path.join(pkg_description, 'worlds', 'worlds', 'small_house.world')
-    rviz_config_path = os.path.join(pkg_description, 'rviz', 'default.rviz')
+    rviz_config_path = os.path.join(pkg_description, 'rviz', 'default_nav.rviz')
     models_path = os.path.join(pkg_description, 'worlds', 'models')
 
     # Set GAZEBO_MODEL_PATH so Gazebo can find the AWS RoboMaker models
@@ -23,7 +24,10 @@ def generate_launch_description():
         default_value=world_path
     )
 
-    robot_description = Command(['xacro', ' ', urdf_path])
+    robot_description = ParameterValue(
+        Command(['xacro', ' ', urdf_path]),
+        value_type=str
+    )
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',

@@ -63,8 +63,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         use_sim_time_arg,
-        map_yaml_arg,
-        map_server_node,
-        amcl_node,
+        #map_yaml_arg,
+        #map_server_node,
+        #amcl_node,
         lifecycle_manager_node,
     ])
