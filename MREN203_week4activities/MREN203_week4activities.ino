@@ -21,14 +21,17 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 200;
+double kp = 120;
 double ki = 0.5*kp;
 double v_des = 0;
 double w_des = 0;
 double vLd, vRd;
 double t_now, t_last;
-const int L = 0.2775;
-
+double L = 0.2775;
+double current_vL = 0;
+double current_vR = 0;
+double last_tickL = 0;
+double last_tickR = 0;
 void decodeEncoderTicksL()
 {
     if (digitalRead(SIGNAL_B) == LOW)
@@ -83,15 +86,17 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   t_now = millis();
-  double current_vL = RHO*2.0 * PI * ((double)encoder_ticksL / (double)TPR) * 1000.0 / (double)(t_now - t_last);
-  double current_vR = (-1)*RHO*2.0 * PI * ((double)encoder_ticksR / (double)TPR) * 1000.0 / (double)(t_now - t_last);
+  current_vL = (RHO*2.0 * PI * (((double)encoder_ticksL - last_tickL) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
+  current_vR = ((-1)*RHO*2.0 * PI * (((double)encoder_ticksR  - last_tickR) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
+  last_tickL = (double)encoder_ticksL;
+  last_tickR = (double)encoder_ticksR;
   
   forward(current_vL, current_vR);
 
   // PWM command to the motor driver
-  
+
   t_last = t_now;
-  delay(100);
+  delay(10);
 }
 
 short PI_controller(double e_now, double e_int, double k_P, double k_I){
@@ -107,9 +112,9 @@ short PI_controller(double e_now, double e_int, double k_P, double k_I){
 }
 
 
-short P_controller(double e_now, double k_P){
-  short u;
-  u = (short)(k_P * e_now);
+double P_controller(double e_now, double k_P, double v){
+  double u;
+  u = (k_P * e_now) + v;
   if (u > 255){
     u = 255;
   }
@@ -124,12 +129,16 @@ void forward(double vL, double vR){
   digitalWrite(I2, LOW);
   digitalWrite(I3, LOW);
   digitalWrite(I4, HIGH);
-  v_des = 200;
+  v_des = 150;
   w_des = 0;
-  vLd = v_des - (2*w_des/L);
-  vRd = v_des + (2*w_des/L);
-  Serial.println(vLd);
-  analogWrite(EA, P_controller((vLd - vL), kp));
-  analogWrite(EB, P_controller((vRd - vR), kp));
+  
+  vLd = v_des - ((2*w_des)/L);
+  vRd = v_des + ((2*w_des)/L);
+
+  double errorL = vLd - vL;
+  double errorR = vRd - vR;
+  Serial.println(errorL);
+  analogWrite(EA, P_controller(errorL, kp, vL));
+  analogWrite(EB, P_controller(errorR, kp, vR));
 
 }
