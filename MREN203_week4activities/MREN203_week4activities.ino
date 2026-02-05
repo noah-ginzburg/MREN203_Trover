@@ -32,6 +32,8 @@ double current_vL = 0;
 double current_vR = 0;
 double last_tickL = 0;
 double last_tickR = 0;
+double I_errorL = 0;
+double I_errorR = 0;
 void decodeEncoderTicksL()
 {
     if (digitalRead(SIGNAL_B) == LOW)
@@ -86,22 +88,23 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   t_now = millis();
-  current_vL = (RHO*2.0 * PI * (((double)encoder_ticksL - last_tickL) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
+  //current_vL = (RHO*2.0 * PI * (((double)encoder_ticksL - last_tickL) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
+  current_vL = ((double)encoder_ticksL - last_tickL) / (double)(t_now - t_last);
   current_vR = ((-1)*RHO*2.0 * PI * (((double)encoder_ticksR  - last_tickR) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
   last_tickL = (double)encoder_ticksL;
   last_tickR = (double)encoder_ticksR;
-  
+  Serial.println(current_vL);
   forward(current_vL, current_vR);
 
   // PWM command to the motor driver
 
   t_last = t_now;
-  delay(10);
+  delay(50);
 }
 
-short PI_controller(double e_now, double e_int, double k_P, double k_I){
-  short u;
-  u = (short)(k_P * e_now + k_I * e_int);
+double PI_controller(double e_now, double e_int, double k_P, double k_I, double v){
+  double u;
+  u = (k_P * e_now + k_I * e_int) + v;
   if (u > 255){
     u = 255;
   }
@@ -137,8 +140,10 @@ void forward(double vL, double vR){
 
   double errorL = vLd - vL;
   double errorR = vRd - vR;
-  Serial.println(errorL);
-  analogWrite(EA, P_controller(errorL, kp, vL));
-  analogWrite(EB, P_controller(errorR, kp, vR));
-
+  I_errorL = I_errorL + errorL;
+  I_errorR = I_errorR + errorR;
+  //analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
+  //analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
+  analogWrite(EA, 255);
+  analogWrite(EB, 255);
 }
