@@ -1,5 +1,30 @@
-#include <Arduino.h> // ← Add this as line 1!
+#include <Arduino.h>
 
+// Struct definitions
+struct VelocityCommand
+{
+  float lin_vel_x;
+  float ang_vel_z;
+};
+
+struct WheelSpeeds
+{
+  float left;
+  float right;
+};
+
+// Function prototypes
+void decodeEncoderTicksL();
+void decodeEncoderTicksR();
+void forward(double vL, double vR);
+short PI_controller(double e_now, double e_int, double k_P, double k_I);
+short P_controller(double e_now, double k_P);
+WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd);
+WheelSpeeds Drive(VelocityCommand cmd);
+void SendSensorData(int left_ticks, int right_ticks, float gyro_z);
+VelocityCommand ReceiveCommands();
+
+// Pin definitions
 int EA = 5;
 int I1 = 8;
 int I2 = 11;
@@ -25,22 +50,10 @@ volatile long encoder_ticksR = 0;
 double kp = 200;
 double ki = 0.5 * kp;
 double v_des = 0;
-double w_des = 0; // see VelocityCommand
+double w_des = 0;
 double vLd, vRd;
 double t_now, t_last;
 const int L = 0.2775;
-
-struct VelocityCommand
-{
-  float lin_vel_x;
-  float ang_vel_z;
-};
-
-struct WheelSpeeds
-{
-  float left;
-  float right;
-};
 
 void decodeEncoderTicksL()
 {
@@ -68,6 +81,21 @@ void decodeEncoderTicksR()
     // SIGNAL_B leads SIGNAL_A, so count the other way
     encoder_ticksR++;
   }
+}
+
+void forward(double vL, double vR)
+{
+  digitalWrite(I1, HIGH);
+  digitalWrite(I2, LOW);
+  digitalWrite(I3, LOW);
+  digitalWrite(I4, HIGH);
+  v_des = 200;
+  w_des = 0;
+  vLd = v_des - (2 * w_des / L);
+  vRd = v_des + (2 * w_des / L);
+  Serial.println(vLd);
+  analogWrite(EA, P_controller((vLd - vL), kp));
+  analogWrite(EB, P_controller((vRd - vR), kp));
 }
 
 void setup()
@@ -101,6 +129,7 @@ void loop()
   /// Consider putting
   WheelSpeeds vel_current;
   WheelSpeeds vel_prev;
+  WheelSpeeds vel_desired; // get this from the pi
 
   double current_vL = RHO * 2.0 * PI * ((double)encoder_ticksL / (double)TPR) *
                       1000.0 / (double)(t_now - t_last);
@@ -150,20 +179,10 @@ short P_controller(double e_now, double k_P)
   return u;
 }
 
-void forward(double vL, double vR)
-{
-  digitalWrite(I1, HIGH);
-  digitalWrite(I2, LOW);
-  digitalWrite(I3, LOW);
-  digitalWrite(I4, HIGH);
-  v_des = 200;
-  w_des = 0;
-  vLd = v_des - (2 * w_des / L);
-  vRd = v_des + (2 * w_des / L);
-  Serial.println(vLd);
-  analogWrite(EA, P_controller((vLd - vL), kp));
-  analogWrite(EB, P_controller((vRd - vR), kp));
-}
+WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd) {
+  // TODO: this function is jut so we can put the odometry math here
+
+};
 
 WheelSpeeds Drive(VelocityCommand cmd)
 {
@@ -182,11 +201,6 @@ WheelSpeeds Drive(VelocityCommand cmd)
   return new_wheelspeed;
   // Disclaimer: I have no idea if this will work
 }
-
-WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd) {
-  // TODO: this function is jut so we can put the odometry math here
-
-};
 
 /*
   Serial communicaiton
