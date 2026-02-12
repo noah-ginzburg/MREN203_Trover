@@ -53,7 +53,7 @@ double v_des = 0;
 double w_des = 0;
 double vLd, vRd;
 double t_now, t_last;
-const int L = 0.2775;
+const double L = 0.2775;
 
 void decodeEncoderTicksL()
 {
@@ -181,8 +181,9 @@ short P_controller(double e_now, double k_P)
 
 WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd) {
   // TODO: this function is jut so we can put the odometry math here
-
-};
+  WheelSpeeds speeds = {0.0, 0.0};
+  return speeds;
+}
 
 WheelSpeeds Drive(VelocityCommand cmd)
 {
@@ -218,6 +219,8 @@ void SendSensorData(int left_ticks, int right_ticks, float gyro_z)
 
 VelocityCommand ReceiveCommands()
 {
+  VelocityCommand cmd = {0.0, 0.0};
+
   if (Serial.available() > 0)
   {
     String data = Serial.readStringUntil('\n');
@@ -228,12 +231,9 @@ VelocityCommand ReceiveCommands()
     float lin_vel_x = data.substring(0, commaIndex).toFloat();
     float ang_vel_z = data.substring(commaIndex + 1).toFloat();
 
-    VelocityCommand cmd;
     cmd.lin_vel_x = lin_vel_x;
     cmd.ang_vel_z = ang_vel_z;
-
-    return cmd;
-
-    // Now control your motors with these velocities
   }
+
+  return cmd;
 }
