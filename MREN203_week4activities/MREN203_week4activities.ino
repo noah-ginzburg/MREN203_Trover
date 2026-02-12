@@ -21,7 +21,7 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 0.7;
+double kp = 5;
 double ki = 0.7 * kp;
 double v_des = 0;
 double w_des = 0;
@@ -130,24 +130,10 @@ int PI_controller(double e_now, double e_int, double k_P, double k_I)
   {
     u = -255;
   }
+
+  // Serial.print("u = ");
   // Serial.println(u);
-  return u;
-}
-
-double P_controller(double e_now, double k_P)
-{
-  double u;
-  u = (k_P * e_now);
-  u = (u / max_v) * 255;
-  if (u > 255)
-  {
-    u = 255;
-  }
-  else if (u < -255)
-  {
-    u = -255;
-  }
-
+  // Serial.println(u);
   return u;
 }
 
@@ -168,13 +154,25 @@ void forward(double vL, double vR)
   double errorR = vRd - vR;
   I_errorL = I_errorL + errorL;
   I_errorR = I_errorR + errorR;
-  Serial.println(I_errorL);
+  Serial.print("current: ");
+  Serial.print(vL);
+  Serial.print("  desired: ");
+  Serial.print(vLd);
+  Serial.print("  error: ");
+  Serial.println(errorL);
 
   l_pwm = l_pwm + PI_controller(errorL, I_errorL, kp,
                                 ki); // current pwm + change in pwm
   r_pwm = r_pwm + PI_controller(errorR, I_errorR, kp,
                                 ki); // current pwm + change in pwm
-
+  if (l_pwm > 255)
+  {
+    l_pwm = 255;
+  }
+  else if (l_pwm < -255)
+  {
+    l_pwm = -255;
+  }
   // analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
   // analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
 
