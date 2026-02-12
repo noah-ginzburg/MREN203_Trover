@@ -21,8 +21,8 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 120;
-double ki = 0.5*kp;
+double kp = 0.7;
+double ki = 0.7*kp;
 double v_des = 0;
 double w_des = 0;
 double vLd, vRd;
@@ -34,6 +34,7 @@ double last_tickL = 0;
 double last_tickR = 0;
 double I_errorL = 0;
 double I_errorR = 0;
+double max_v = 0.95;
 void decodeEncoderTicksL()
 {
     if (digitalRead(SIGNAL_B) == LOW)
@@ -88,29 +89,30 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   t_now = millis();
-  //current_vL = (RHO*2.0 * PI * (((double)encoder_ticksL - last_tickL) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
-  current_vL = ((double)encoder_ticksL - last_tickL) / (double)(t_now - t_last);
-  current_vR = ((-1)*RHO*2.0 * PI * (((double)encoder_ticksR  - last_tickR) / (double)TPR) * 1000.0 / (double)(t_now - t_last)) * 255;
+  current_vL = (RHO*2.0 * PI * (((double)encoder_ticksL - last_tickL) / (double)TPR) * 1000.0 / (double)(t_now - t_last));
+  current_vR = ((-1)*RHO*2.0 * PI* (((double)encoder_ticksR  - last_tickR) / (double)TPR) * 1000.0 / (double)(t_now - t_last));
   last_tickL = (double)encoder_ticksL;
   last_tickR = (double)encoder_ticksR;
-  Serial.println(current_vL);
+  //Serial.println(current_vL);
   forward(current_vL, current_vR);
 
   // PWM command to the motor driver
 
   t_last = t_now;
-  delay(50);
+  delay(100);
 }
 
 double PI_controller(double e_now, double e_int, double k_P, double k_I, double v){
   double u;
   u = (k_P * e_now + k_I * e_int) + v;
+  u = (u/max_v) *255;
   if (u > 255){
     u = 255;
   }
   else if (u < -255){
     u = -255;
   }
+  //Serial.println(u);
   return u;
 }
 
@@ -118,12 +120,14 @@ double PI_controller(double e_now, double e_int, double k_P, double k_I, double 
 double P_controller(double e_now, double k_P, double v){
   double u;
   u = (k_P * e_now) + v;
+  u = (u/max_v) *255;
   if (u > 255){
     u = 255;
   }
   else if (u < -255){
     u = -255;
   }
+  Serial.println(u);
   return u;
 }
 
@@ -132,18 +136,21 @@ void forward(double vL, double vR){
   digitalWrite(I2, LOW);
   digitalWrite(I3, LOW);
   digitalWrite(I4, HIGH);
-  v_des = 150;
+  v_des = 0.95;
   w_des = 0;
   
-  vLd = v_des - ((2*w_des)/L);
-  vRd = v_des + ((2*w_des)/L);
+  vLd = v_des - ((L*w_des)/2);
+  vRd = v_des + ((L*w_des)/2);
 
   double errorL = vLd - vL;
   double errorR = vRd - vR;
   I_errorL = I_errorL + errorL;
   I_errorR = I_errorR + errorR;
-  //analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
-  //analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
-  analogWrite(EA, 255);
-  analogWrite(EB, 255);
+  Serial.println(I_errorL);
+  analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
+  analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
+  //analogWrite(EA, P_controller(errorL, kp, vL));
+  //analogWrite(EB, P_controller(errorR, kp, vR));
+  //analogWrite(EA, 255);
+  //analogWrite(EB, 255);
 }
