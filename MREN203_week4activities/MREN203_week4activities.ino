@@ -21,7 +21,7 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 5;
+double kp = 10;
 double ki = 0.7 * kp;
 double v_des = 0;
 double w_des = 0;
@@ -122,13 +122,13 @@ int PI_controller(double e_now, double e_int, double k_P, double k_I)
   // u = (int)(k_P * e_now + k_I * e_int);
   //  u = (u/max_v) *255;
 
-  if (u > 255)
+  if (u > 254)
   {
-    u = 255;
+    u = 254;
   }
-  else if (u < -255)
+  else if (u < -254)
   {
-    u = -255;
+    u = -254;
   }
 
   // Serial.print("u = ");
@@ -143,7 +143,7 @@ void forward(double vL, double vR)
   digitalWrite(I2, LOW);
   digitalWrite(I3, LOW);
   digitalWrite(I4, HIGH);
-  v_des = 0.95;
+  v_des = 0.6;
   w_des = 0;
 
   vLd = v_des - ((L * w_des) / 2);
@@ -173,9 +173,20 @@ void forward(double vL, double vR)
   {
     l_pwm = -255;
   }
+  if (r_pwm > 255)
+  {
+    r_pwm = 255;
+  }
+  else if (r_pwm < -255)
+  {
+    r_pwm = -255;
+  }
   // analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
   // analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
-
+  //Serial.print(millis());
+  //Serial.print(",");
+  //Serial.println(l_pwm);
+  
   analogWrite(EA, l_pwm);
   analogWrite(EB, r_pwm);
 }
