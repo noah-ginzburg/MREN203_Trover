@@ -21,7 +21,7 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 10;
+double kp = 7;
 double ki = 0.7 * kp;
 double v_des = 0;
 double w_des = 0;
@@ -34,10 +34,15 @@ double last_tickL = 0;
 double last_tickR = 0;
 double I_errorL = 0;
 double I_errorR = 0;
+double d_errorL = 0;
+double d_errorR = 0;
 double max_v = 0.95;
+double deltaT = 0;
 
 int l_pwm = 0;
 int r_pwm = 0;
+int l_pwm_b = 0;
+int r_pwm_b = 0;
 
 void decodeEncoderTicksL()
 {
@@ -102,11 +107,11 @@ void loop()
                 (double)(t_now - t_last));
 
   // current velocity = inverse of the left and right speed equatoin
-
+  deltaT = t_now - t_last;
   last_tickL = (double)encoder_ticksL;
   last_tickR = (double)encoder_ticksR;
   // Serial.println(current_vL);
-  forward(current_vL, current_vR);
+  forward(current_vL, current_vR, deltaT);
 
   // PWM command to the motor driver
 
@@ -117,9 +122,9 @@ void loop()
 int PI_controller(double e_now, double e_int, double k_P, double k_I)
 {
   int u; // u is the change in PWM to be applied
-  u = (int)(k_P * e_now);
+  //u = (int)(k_P * e_now);
 
-  // u = (int)(k_P * e_now + k_I * e_int);
+   u = (int)(k_P * e_now + k_I * e_int);
   //  u = (u/max_v) *255;
 
   if (u > 254)
@@ -137,7 +142,7 @@ int PI_controller(double e_now, double e_int, double k_P, double k_I)
   return u;
 }
 
-void forward(double vL, double vR)
+void forward(double vL, double vR, double t)
 {
   digitalWrite(I1, HIGH);
   digitalWrite(I2, LOW);
@@ -154,13 +159,16 @@ void forward(double vL, double vR)
   double errorR = vRd - vR;
   I_errorL = I_errorL + errorL;
   I_errorR = I_errorR + errorR;
+  d_errorL = (l_pwm - l_pwm_b)/t;
+  d_errorR = (r_pwm - r_pwm_b)/t;
   Serial.print("current: ");
   Serial.print(vL);
   Serial.print("  desired: ");
   Serial.print(vLd);
   Serial.print("  error: ");
   Serial.println(errorL);
-
+  l_pwm_b = l_pwm;
+  r_pwm_b = r_pwm;
   l_pwm = l_pwm + PI_controller(errorL, I_errorL, kp,
                                 ki); // current pwm + change in pwm
   r_pwm = r_pwm + PI_controller(errorR, I_errorR, kp,
