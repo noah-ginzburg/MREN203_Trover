@@ -1,30 +1,9 @@
 #include <Arduino.h>
+// Need this library installed to access the UNO Wifi Rev2 board's IMU
+// For more details, look here:
+// https://www.arduino.cc/reference/en/libraries/arduino_lsm6ds3/,→
+#include <Arduino_LSM6DS3.h>
 
-// Struct definitions
-struct VelocityCommand
-{
-  float lin_vel_x;
-  float ang_vel_z;
-};
-
-struct WheelSpeeds
-{
-  float left;
-  float right;
-};
-
-// Function prototypes
-void decodeEncoderTicksL();
-void decodeEncoderTicksR();
-void forward(double vL, double vR);
-short PI_controller(double e_now, double e_int, double k_P, double k_I);
-short P_controller(double e_now, double k_P);
-WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd);
-WheelSpeeds Drive(VelocityCommand cmd);
-void SendSensorData(int left_ticks, int right_ticks, float gyro_z);
-VelocityCommand ReceiveCommands();
-
-// Pin definitions
 int EA = 5;
 int I1 = 8;
 int I2 = 11;
@@ -47,143 +26,91 @@ const double RHO = 0.0625;
 volatile long encoder_ticksL = 0;
 volatile long encoder_ticksR = 0;
 
-double kp = 200;
-double ki = 0.5 * kp;
-double v_des = 0;
-double w_des = 0;
-double vLd, vRd;
-double t_now, t_last;
-const double L = 0.2775;
+// Vehicle track [m]
+const double ELL = 0.2775;
 
-void decodeEncoderTicksL()
+// Sampling interval for measurements in milliseconds
+const int T = 100;
+
+// Controller gains (use the same values for both wheels)
+const double KP = 200.0; // Proportional gain
+const double KI = 100.0; // Integral gain
+
+/* VARIABLE DECLARATIONS */
+
+// Motor PWM command variables [0-255]
+short u_L = 0;
+short u_R = 0;
+
+// Counter to keep track of encoder ticks [integer]
+volatile long encoder_ticks_L = 0;
+volatile long encoder_ticks_R = 0;
+
+// Variables to store estimated angular rates of wheels [rad/s]
+double omega_L = 0.0;
+double omega_R = 0.0;
+
+// Variables to store estimated wheel speeds [m/s]
+double v_L = 0.0;
+double v_R = 0.0;
+
+// Variables to store vehicle speed and turning rate
+double v = 0.0;     // [m/s]
+double omega = 0.0; // [rad/s]
+
+// Variables to store desired vehicle speed and turning rate
+double v_d = 0.0;     // [m/s]
+double omega_d = 0.0; // [rad/s]
+
+// Variable to store desired wheel speeds [m/s]
+double v_Ld = 0.0;
+double v_Rd = 0.0;
+
+// Counters for milliseconds during interval
+long t_now = 0;
+long t_last = 0;
+
+// Variables to store errors for controller
+double e_L = 0.0;
+double e_R = 0.0;
+double e_Lint = 0.0;
+double e_Rint = 0.0;
+
+// Variables to store angular rates from the gyro [degrees/s]
+float omega_x, omega_y, omega_z;
+
+// Variables to store accelerations [g's]
+float a_x, a_y, a_z;
+
+// Variables to store sample rates from sensor [Hz]
+float a_f, g_f;
+
+const float GYRO_Z_BIAS = 0; // CALIBRATE THIS!!!
+
+// Struct definitions
+struct VelocityCommand
 {
-  if (digitalRead(SIGNAL_B) == LOW)
-  {
-    // SIGNAL_A leads SIGNAL_B, so count one way
-    encoder_ticksL--;
-  }
-  else
-  {
-    // SIGNAL_B leads SIGNAL_A, so count the other way
-    encoder_ticksL++;
-  }
-}
+  float lin_vel_x;
+  float ang_vel_z;
+};
 
-void decodeEncoderTicksR()
+struct WheelSpeeds
 {
-  if (digitalRead(SIGNAL_D) == LOW)
-  {
-    // SIGNAL_A leads SIGNAL_B, so count one way
-    encoder_ticksR--;
-  }
-  else
-  {
-    // SIGNAL_B leads SIGNAL_A, so count the other way
-    encoder_ticksR++;
-  }
-}
+  float left;
+  float right;
+};
 
-void forward(double vL, double vR)
-{
-  digitalWrite(I1, HIGH);
-  digitalWrite(I2, LOW);
-  digitalWrite(I3, LOW);
-  digitalWrite(I4, HIGH);
-  v_des = 200;
-  w_des = 0;
-  vLd = v_des - (2 * w_des / L);
-  vRd = v_des + (2 * w_des / L);
-  Serial.println(vLd);
-  analogWrite(EA, P_controller((vLd - vL), kp));
-  analogWrite(EB, P_controller((vRd - vR), kp));
-}
-
-void setup()
-{
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  pinMode(EA, OUTPUT);
-  pinMode(I1, OUTPUT);
-  pinMode(I2, OUTPUT);
-  pinMode(EB, OUTPUT);
-  pinMode(I3, OUTPUT);
-  pinMode(I4, OUTPUT);
-
-  pinMode(SIGNAL_A, INPUT);
-  pinMode(SIGNAL_B, INPUT);
-  pinMode(SIGNAL_C, INPUT);
-  pinMode(SIGNAL_D, INPUT);
-
-  // Every time the pin goes high, this is a pulse
-  attachInterrupt(digitalPinToInterrupt(SIGNAL_A), decodeEncoderTicksL, RISING);
-  attachInterrupt(digitalPinToInterrupt(SIGNAL_C), decodeEncoderTicksR, RISING);
-
-  delay(1000);
-}
-
-void loop()
-{
-  // put your main code here, to run repeatedly:
-  t_now = millis();
-
-  /// Consider putting
-  WheelSpeeds vel_current;
-  WheelSpeeds vel_prev;
-  WheelSpeeds vel_desired; // get this from the pi
-
-  double current_vL = RHO * 2.0 * PI * ((double)encoder_ticksL / (double)TPR) *
-                      1000.0 / (double)(t_now - t_last);
-  double current_vR = (-1) * RHO * 2.0 * PI *
-                      ((double)encoder_ticksR / (double)TPR) * 1000.0 /
-                      (double)(t_now - t_last);
-
-  forward(current_vL, current_vR);
-
-  // PWM command to the motor driver
-
-  t_last = t_now;
-
-  // Update the wheel speeds
-  vel_prev = vel_current;
-
-  delay(100);
-}
-
-short PI_controller(double e_now, double e_int, double k_P, double k_I)
-{
-  short u;
-  u = (short)(k_P * e_now + k_I * e_int);
-  if (u > 255)
-  {
-    u = 255;
-  }
-  else if (u < -255)
-  {
-    u = -255;
-  }
-  return u;
-}
-
-short P_controller(double e_now, double k_P)
-{
-  short u;
-  u = (short)(k_P * e_now);
-  if (u > 255)
-  {
-    u = 255;
-  }
-  else if (u < -255)
-  {
-    u = -255;
-  }
-  return u;
-}
-
-WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd) {
-  // TODO: this function is jut so we can put the odometry math here
-  WheelSpeeds speeds = {0.0, 0.0};
-  return speeds;
-}
+// Function prototypes
+void decodeEncoderTicksL();
+void decodeEncoderTicksR();
+void forward(double vL, double vR, double t, VelocityCommand desired_speed);
+short PI_controller(double e_now, double e_int, double k_P, double k_I);
+WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd);
+WheelSpeeds Drive(VelocityCommand cmd);
+void driveVehicle(short u_L, short u_R);
+void SendSensorData(int left_ticks, int right_ticks, float gyro_z);
+VelocityCommand ReceiveVelocityCommand();
+void ReadImu();
 
 WheelSpeeds Drive(VelocityCommand cmd)
 {
@@ -217,7 +144,7 @@ void SendSensorData(int left_ticks, int right_ticks, float gyro_z)
   Serial.println(gyro_z); // println adds \n
 }
 
-VelocityCommand ReceiveCommands()
+VelocityCommand ReceiveVelocityCommand()
 {
   VelocityCommand cmd = {0.0, 0.0};
 
@@ -236,4 +163,319 @@ VelocityCommand ReceiveCommands()
   }
 
   return cmd;
+}
+
+void decodeEncoderTicksL()
+{
+  if (digitalRead(SIGNAL_B) == LOW)
+  {
+    // SIGNAL_A leads SIGNAL_B, so count one way
+    encoder_ticksL--;
+  }
+  else
+  {
+    // SIGNAL_B leads SIGNAL_A, so count the other way
+    encoder_ticksL++;
+  }
+}
+
+void decodeEncoderTicksR()
+{
+  if (digitalRead(SIGNAL_D) == LOW)
+  {
+    // SIGNAL_A leads SIGNAL_B, so count one way
+    encoder_ticksR--;
+  }
+  else
+  {
+    // SIGNAL_B leads SIGNAL_A, so count the other way
+    encoder_ticksR++;
+  }
+}
+
+// Compute the wheel rate from elapsed time and encoder ticks [rad/s]
+double compute_wheel_rate(long encoder_ticks, double delta_t)
+{
+  double omega;
+  omega = 2.0 * PI * ((double)encoder_ticks / (double)TPR) * 1000.0 / delta_t;
+  return omega;
+}
+
+// Compute wheel speed [m/s]
+double compute_wheel_speed(double omega_wheel)
+{
+  double v_wheel;
+  v_wheel = omega_wheel * RHO;
+  return v_wheel;
+}
+
+// Compute vehicle speed [m/s]
+double compute_vehicle_speed(double v_L, double v_R)
+{
+  double v;
+  v = 0.5 * (v_L + v_R);
+  return v;
+}
+
+// Compute vehicle turning rate [rad/s]
+double compute_vehicle_rate(double v_L, double v_R)
+{
+  double omega;
+  omega = 1.0 / ELL * (v_R - v_L);
+  return omega;
+}
+
+// Compute v_L from v and omega
+double compute_L_wheel_speed(double v, double omega)
+{
+  double v_wheel = 0.0;
+  v_wheel = v - ELL / 2.0 * omega;
+  return v_wheel;
+}
+
+// Compute v_R from v and omega
+double compute_R_wheel_speed(double v, double omega)
+{
+  double v_wheel = 0.0;
+  v_wheel = v + ELL / 2.0 * omega;
+  return v_wheel;
+}
+
+// Wheel speed PI controller function
+short PI_controller(double e_now, double e_int, double k_P, double k_I)
+{
+  short u;
+  u = (short)(k_P * e_now + k_I * e_int);
+
+  // Saturation (i.e., maximum input) detection
+  if (u > 255)
+  {
+    u = 255;
+  }
+  else if (u < -255)
+  {
+    u = -255;
+  }
+  return u;
+}
+
+void setup()
+{
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+
+  // Wait for serial connection before starting
+  while (!Serial)
+    delay(10);
+
+  pinMode(EA, OUTPUT);
+  pinMode(I1, OUTPUT);
+  pinMode(I2, OUTPUT);
+  pinMode(EB, OUTPUT);
+  pinMode(I3, OUTPUT);
+  pinMode(I4, OUTPUT);
+
+  pinMode(SIGNAL_A, INPUT);
+  pinMode(SIGNAL_B, INPUT);
+  pinMode(SIGNAL_C, INPUT);
+  pinMode(SIGNAL_D, INPUT);
+
+  // Every time the pin goes high, this is a pulse
+  attachInterrupt(digitalPinToInterrupt(SIGNAL_A), decodeEncoderTicksL, RISING);
+  attachInterrupt(digitalPinToInterrupt(SIGNAL_C), decodeEncoderTicksR, RISING);
+
+  // Check that the board is initialized
+  if (!IMU.begin())
+  {
+    // Print an error message if the IMU is not ready
+    Serial.print("Failed to initialize IMU :(");
+    Serial.print("\n");
+    while (1)
+    {
+      delay(10);
+    }
+  }
+
+  // Read the sample rate of the accelerometer and gyroscope
+  a_f = IMU.accelerationSampleRate();
+  g_f = IMU.gyroscopeSampleRate();
+
+  // Print these values to the serial window
+  // Serial.print("Accelerometer sample rate: ");
+  // Serial.println(a_f);
+  // Serial.print("Gyroscope sample rate: ");
+  // Serial.println(g_f);
+
+  delay(1000);
+}
+
+void loop()
+{
+  // put your main code here, to run repeatedly:
+  // Perform control update every T milliseconds
+  if (t_now - t_last >= T)
+  {
+    VelocityCommand vel_desired = ReceiveVelocityCommand();
+    // v_d = vel_desired.lin_vel_x;
+    // omega_d= vel_desired.ang_vel_z;
+
+    ReadImu();
+
+    // Set the desired vehicle speed and turning rate
+    v_d = 0.5;     // [m/s]
+    omega_d = 0.0; // [rad/s]
+
+    // Estimate the rotational speed of each wheel [rad/s]
+    omega_L = compute_wheel_rate(encoder_ticks_L, (double)(t_now - t_last));
+    omega_R = compute_wheel_rate(encoder_ticks_R, (double)(t_now - t_last));
+
+    // Compute the speed of each wheel [m/s]
+    v_L = compute_wheel_speed(omega_L);
+    v_R = compute_wheel_speed(omega_R);
+
+    // Compute the speed of the vehicle [m/s]
+    v = compute_vehicle_speed(v_L, v_R);
+
+    // Compute the turning rate of the vehicle [rad/s]
+    omega = compute_vehicle_rate(v_L, v_R);
+
+    // Record the current time [ms]
+    t_last = t_now;
+
+    // Reset the encoder ticks counter
+    encoder_ticks_L = 0;
+    encoder_ticks_R = 0;
+
+    // Compute the desired wheel speeds from v_d and omega_d
+    v_Ld = compute_L_wheel_speed(v_d, omega_d);
+    v_Rd = compute_R_wheel_speed(v_d, omega_d);
+
+    // Compute errors
+    e_L = v_Ld - v_L;
+    e_R = v_Rd - v_R;
+
+    // Integrate errors with anti-windup
+    if (abs(u_L) < 255)
+    {
+      e_Lint += e_L;
+    }
+    if (abs(u_R) < 255)
+    {
+      e_Rint += e_R;
+    }
+
+    // Compute control signals using PI controller
+    u_L = PI_controller(e_L, e_Lint, KP, KI);
+    u_R = PI_controller(e_R, e_Rint, KP, KI);
+
+    // Drive the vehicle
+    driveVehicle(u_L, u_R);
+
+    // Print some stuff to the serial monitor (or plotter)
+    // Serial.print("Vehicle_speed_[m/s]:");
+    // Serial.print(v);
+    // Serial.print(",");
+    // Serial.print("Turning_rate_[rad/s]:");
+    // Serial.print(omega);
+    // Serial.print(",");
+    // Serial.print("u_L:");
+    // Serial.print(u_L);
+    // Serial.print(",");
+    // Serial.print("u_R:");
+    // Serial.print(u_R);
+    // Serial.print("\n");
+
+    // Test this
+    // SendSensorData(encoder_ticks_L, encoder_ticks_R, omega_z);
+  }
+}
+
+void forward(double vL, double vR, double t, VelocityCommand desired_speed)
+{
+  digitalWrite(I1, HIGH);
+  digitalWrite(I2, LOW);
+  digitalWrite(I3, LOW);
+  digitalWrite(I4, HIGH);
+
+  v_des = desired_speed.lin_vel_x;
+  w_des = desired_speed.ang_vel_z;
+
+  vLd = v_des - ((L * w_des) / 2);
+  vRd = v_des + ((L * w_des) / 2);
+
+  ///////////////////////////////
+  double errorL = vLd - vL;
+  double errorR = vRd - vR;
+  I_errorL = I_errorL + errorL;
+  I_errorR = I_errorR + errorR;
+  d_errorL = (l_pwm - l_pwm_b) / t;
+  d_errorR = (r_pwm - r_pwm_b) / t;
+
+  // Serial.print("current: ");
+  // Serial.print(vL);
+  // Serial.print("  desired: ");
+  // Serial.print(vLd);
+  // Serial.print("  error: ");
+  // Serial.println(errorL);
+
+  l_pwm = l_pwm + PI_controller(errorL, I_errorL, kp,
+                                ki); // current pwm + change in pwm
+  r_pwm = r_pwm + PI_controller(errorR, I_errorR, kp,
+                                ki); // current pwm + change in pwm
+  if (l_pwm > 255)
+  {
+    l_pwm = 255;
+  }
+  else if (l_pwm < -255)
+  {
+    l_pwm = -255;
+  }
+  if (r_pwm > 255)
+  {
+    r_pwm = 255;
+  }
+  else if (r_pwm < -255)
+  {
+    r_pwm = -255;
+  }
+  // analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
+  // analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
+  // Serial.print(millis());
+  // Serial.print(",");
+  // Serial.println(l_pwm);
+
+  analogWrite(EA, l_pwm);
+  analogWrite(EB, r_pwm);
+}
+
+void ReadImu()
+{
+  // Read from the accelerometer
+  if (IMU.accelerationAvailable())
+  {
+    IMU.readAcceleration(a_x, a_y, a_z);
+
+    // Print the accelerometer measurements to the Serial Monitor
+    // Serial.print(a_x);
+    // Serial.print("\t");
+    // Serial.print(a_y);
+    // Serial.print("\t");
+    // Serial.print(a_z);
+    // Serial.print(" g\t\t");
+  }
+
+  // Read from the gyroscope
+  if (IMU.gyroscopeAvailable())
+  {
+    IMU.readGyroscope(omega_x, omega_y, omega_z);
+    omega_z = omega_z - GYRO_Z_BIAS;
+
+    // Print the gyroscope measurements to the Serial Monitor
+    // Serial.print(omega_x);
+    // Serial.print("\t");
+    // Serial.print(omega_y);
+    // Serial.print("\t");
+    // Serial.print(omega_z);
+    // Serial.print(" deg/s\n");
+  }
 }
