@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'trover_serial_comm = trover_communication.trover_serial_comm:main'
         ],
     },
 )
