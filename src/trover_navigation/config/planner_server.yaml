@@ -80,11 +80,11 @@ global_costmap:
           inf_is_valid: false
           clearing_threshold: 0.02
           marking_threshold: 0.52
-          observation_persistence: 1.0   
+          observation_persistence: 0.5 
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 1.5
-        inflation_radius: 0.6
+        inflation_radius: 0.4
       
       always_send_full_costmap: true
