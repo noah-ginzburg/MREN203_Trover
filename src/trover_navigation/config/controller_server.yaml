@@ -16,8 +16,8 @@ controller_server:
     
     general_goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.15
+      xy_goal_tolerance: 0.20
+      yaw_goal_tolerance: 0.50
       stateful: true
 
     controller_plugins: ["FollowPath"]
@@ -28,14 +28,14 @@ controller_server:
       # Trajectory generator
       trajectory_generator_name: "dwb_plugins::StandardTrajectoryGenerator"
 
-      min_vel_x: -0.2
+      min_vel_x: 0.2
       min_speed_xy: 0.0
       max_speed_xy: 0.4
       min_speed_theta: 0.2
-      max_vel_x: 0.4
+      max_vel_x: 0.5
       max_vel_theta: 1.0
 
-      acc_lim_x: 0.5
+      acc_lim_x: 0.2
       acc_lim_theta: 2.0
       decel_lim_x: -1.0
       decel_lim_theta: -2.0
@@ -52,7 +52,7 @@ controller_server:
         - PathDist
         - GoalDist
 
-      RotateToGoal.scale: 100.0
+      RotateToGoal.scale: 32.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
       PathAlign.scale: 32.0

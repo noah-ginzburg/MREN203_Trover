@@ -152,9 +152,32 @@ class Trover_Serial_Node(Node):
         self.imu_publisher.publish(msg)
 
     def cmd_vel_callback(self, msg):
+<<<<<<< HEAD
         """Called whenever a cmd_vel message is received — just update stored command."""
         self._last_cmd_linear = -msg.linear.x
         self._last_cmd_angular = msg.angular.z
+=======
+        """Called whenever a cmd_vel message is received"""
+        # Check if serial port exists
+        if self.serial_port is None or not self.serial_port.is_open:
+            self.get_logger().warn('Serial port not available, cannot send cmd_vel')
+            return
+        
+        # Extract velocities
+        linear_x = msg.linear.x
+        angular_z = -msg.angular.z
+        
+        # Format data to send (customize this for your protocol)
+        data_string = f"{linear_x},{angular_z}\n"
+        
+        # Send over serial
+        try:
+            self.serial_port.write(data_string.encode('utf-8'))
+            self.get_logger().info(f'Sent: {data_string.strip()}')
+        except serial.SerialException as e:
+            self.get_logger().error(f'Serial write error: {e}')
+            self.serial_port = None  # Mark as disconnected
+>>>>>>> 71b08b9 (nav stack woking)
     
     def destroy_node(self):
         """Clean up when node shuts down"""
