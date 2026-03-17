@@ -1,0 +1,547 @@
+[1.724s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.724s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=2, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7299b5b684f0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7299b5b33ee0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7299b5b33ee0>>)
+[3.334s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[3.334s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[3.334s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[3.334s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[3.334s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[3.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[3.335s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/elizabeth/MREN203_Trover'
+[3.335s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[3.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[3.375s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[3.375s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[3.375s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[3.375s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[3.375s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[3.378s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['ignore', 'ignore_ament_install']
+[3.378s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'ignore'
+[3.378s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'ignore_ament_install'
+[3.378s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['colcon_pkg']
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'colcon_pkg'
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['colcon_meta']
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'colcon_meta'
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['ros']
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'ros'
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['cmake', 'python']
+[3.379s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'cmake'
+[3.380s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'python'
+[3.380s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extensions ['python_setup_py']
+[3.380s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities) by extension 'python_setup_py'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['ignore', 'ignore_ament_install']
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'ignore'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'ignore_ament_install'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['colcon_pkg']
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'colcon_pkg'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['colcon_meta']
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'colcon_meta'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['ros']
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'ros'
+[3.383s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['cmake', 'python']
+[3.384s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'cmake'
+[3.384s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'python'
+[3.384s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extensions ['python_setup_py']
+[3.384s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls) by extension 'python_setup_py'
+[3.386s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['ignore', 'ignore_ament_install']
+[3.386s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'ignore'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'ignore_ament_install'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['colcon_pkg']
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'colcon_pkg'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['colcon_meta']
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'colcon_meta'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['ros']
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'ros'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['cmake', 'python']
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'cmake'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'python'
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extensions ['python_setup_py']
+[3.387s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/include) by extension 'python_setup_py'
+[3.390s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['ignore', 'ignore_ament_install']
+[3.390s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'ignore'
+[3.390s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'ignore_ament_install'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['colcon_pkg']
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'colcon_pkg'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['colcon_meta']
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'colcon_meta'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['ros']
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'ros'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['cmake', 'python']
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'cmake'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'python'
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extensions ['python_setup_py']
+[3.391s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/src) by extension 'python_setup_py'
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['ignore', 'ignore_ament_install']
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'ignore'
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'ignore_ament_install'
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['colcon_pkg']
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'colcon_pkg'
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['colcon_meta']
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'colcon_meta'
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['ros']
+[3.394s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'ros'
+[3.395s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['cmake', 'python']
+[3.395s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'cmake'
+[3.395s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'python'
+[3.395s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extensions ['python_setup_py']
+[3.395s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/test) by extension 'python_setup_py'
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['ignore', 'ignore_ament_install']
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'ignore'
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'ignore_ament_install'
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['colcon_pkg']
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'colcon_pkg'
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['colcon_meta']
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'colcon_meta'
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['ros']
+[3.398s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'ros'
+[3.399s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['cmake', 'python']
+[3.399s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'cmake'
+[3.399s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'python'
+[3.399s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extensions ['python_setup_py']
+[3.399s] Level 1:colcon.colcon_core.package_identification:_identify(MREN203_week4activities/trover_controls/unused) by extension 'python_setup_py'
+[3.402s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[3.402s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[3.402s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[3.405s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[3.405s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[3.406s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[3.409s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[3.410s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[3.410s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[3.410s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[3.410s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[3.411s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[3.414s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extensions ['ignore', 'ignore_ament_install']
+[3.415s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extension 'ignore'
+[3.415s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extension 'ignore_ament_install'
+[3.415s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extensions ['colcon_pkg']
+[3.415s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extension 'colcon_pkg'
+[3.416s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extensions ['colcon_meta']
+[3.416s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extension 'colcon_meta'
+[3.416s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extensions ['ros']
+[3.416s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_bringup) by extension 'ros'
+[3.431s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_bringup' with type 'ros.ament_cmake' and name 'trover_bringup'
+[3.433s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extensions ['ignore', 'ignore_ament_install']
+[3.433s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extension 'ignore'
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extension 'ignore_ament_install'
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extensions ['colcon_pkg']
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extension 'colcon_pkg'
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extensions ['colcon_meta']
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extension 'colcon_meta'
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extensions ['ros']
+[3.434s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_communication) by extension 'ros'
+[3.437s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_communication' with type 'ros.ament_python' and name 'trover_communication'
+[3.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extensions ['ignore', 'ignore_ament_install']
+[3.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extension 'ignore'
+[3.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extension 'ignore_ament_install'
+[3.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extensions ['colcon_pkg']
+[3.441s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extension 'colcon_pkg'
+[3.441s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extensions ['colcon_meta']
+[3.441s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extension 'colcon_meta'
+[3.441s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extensions ['ros']
+[3.441s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_description) by extension 'ros'
+[3.444s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_description' with type 'ros.ament_cmake' and name 'trover_description'
+[3.447s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extensions ['ignore', 'ignore_ament_install']
+[3.447s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extension 'ignore'
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extension 'ignore_ament_install'
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extensions ['colcon_pkg']
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extension 'colcon_pkg'
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extensions ['colcon_meta']
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extension 'colcon_meta'
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extensions ['ros']
+[3.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_drivers) by extension 'ros'
+[3.451s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_drivers' with type 'ros.ament_cmake' and name 'trover_drivers'
+[3.453s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extensions ['ignore', 'ignore_ament_install']
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extension 'ignore'
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extension 'ignore_ament_install'
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extensions ['colcon_pkg']
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extension 'colcon_pkg'
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extensions ['colcon_meta']
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extension 'colcon_meta'
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extensions ['ros']
+[3.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_navigation) by extension 'ros'
+[3.458s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_navigation' with type 'ros.ament_python' and name 'trover_navigation'
+[3.460s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extensions ['ignore', 'ignore_ament_install']
+[3.460s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extension 'ignore'
+[3.460s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extension 'ignore_ament_install'
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extensions ['colcon_pkg']
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extension 'colcon_pkg'
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extensions ['colcon_meta']
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extension 'colcon_meta'
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extensions ['ros']
+[3.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_slam) by extension 'ros'
+[3.464s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_slam' with type 'ros.ament_python' and name 'trover_slam'
+[3.467s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extensions ['ignore', 'ignore_ament_install']
+[3.467s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extension 'ignore'
+[3.467s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extension 'ignore_ament_install'
+[3.467s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extensions ['colcon_pkg']
+[3.467s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extension 'colcon_pkg'
+[3.468s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extensions ['colcon_meta']
+[3.468s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extension 'colcon_meta'
+[3.468s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extensions ['ros']
+[3.468s] Level 1:colcon.colcon_core.package_identification:_identify(src/trover_state_estimation) by extension 'ros'
+[3.473s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trover_state_estimation' with type 'ros.ament_python' and name 'trover_state_estimation'
+[3.473s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[3.473s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[3.473s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[3.473s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[3.474s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[3.638s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[3.638s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[3.680s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/elizabeth/MREN203_Trover/install
+[3.691s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 327 installed packages in /opt/ros/humble
+[3.714s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_args' from command line to 'None'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_target' from command line to 'None'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_clean_cache' from command line to 'False'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_clean_first' from command line to 'False'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'cmake_force_configure' from command line to 'False'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'ament_cmake_args' from command line to 'None'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'catkin_cmake_args' from command line to 'None'
+[4.381s] Level 5:colcon.colcon_core.verb:set package 'trover_communication' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.381s] DEBUG:colcon.colcon_core.verb:Building package 'trover_communication' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_communication', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_communication', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_communication', 'symlink_install': False, 'test_result_base': None}
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_args' from command line to 'None'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_target' from command line to 'None'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_clean_cache' from command line to 'False'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_clean_first' from command line to 'False'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'cmake_force_configure' from command line to 'False'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'ament_cmake_args' from command line to 'None'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'catkin_cmake_args' from command line to 'None'
+[4.382s] Level 5:colcon.colcon_core.verb:set package 'trover_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.382s] DEBUG:colcon.colcon_core.verb:Building package 'trover_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_description', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_description', 'symlink_install': False, 'test_result_base': None}
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_args' from command line to 'None'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_target' from command line to 'None'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_clean_cache' from command line to 'False'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_clean_first' from command line to 'False'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'cmake_force_configure' from command line to 'False'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'ament_cmake_args' from command line to 'None'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'catkin_cmake_args' from command line to 'None'
+[4.383s] Level 5:colcon.colcon_core.verb:set package 'trover_drivers' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.383s] DEBUG:colcon.colcon_core.verb:Building package 'trover_drivers' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_drivers', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_drivers', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_drivers', 'symlink_install': False, 'test_result_base': None}
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_args' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_target' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_clean_cache' from command line to 'False'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_clean_first' from command line to 'False'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'cmake_force_configure' from command line to 'False'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'ament_cmake_args' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'catkin_cmake_args' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_navigation' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.384s] DEBUG:colcon.colcon_core.verb:Building package 'trover_navigation' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_navigation', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_navigation', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_navigation', 'symlink_install': False, 'test_result_base': None}
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_args' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_target' from command line to 'None'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.384s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_clean_cache' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_clean_first' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'cmake_force_configure' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'ament_cmake_args' from command line to 'None'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'catkin_cmake_args' from command line to 'None'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_slam' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.385s] DEBUG:colcon.colcon_core.verb:Building package 'trover_slam' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_slam', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_slam', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_slam', 'symlink_install': False, 'test_result_base': None}
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_args' from command line to 'None'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_target' from command line to 'None'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_clean_cache' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_clean_first' from command line to 'False'
+[4.385s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'cmake_force_configure' from command line to 'False'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'ament_cmake_args' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'catkin_cmake_args' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_state_estimation' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.386s] DEBUG:colcon.colcon_core.verb:Building package 'trover_state_estimation' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_state_estimation', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_state_estimation', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_state_estimation', 'symlink_install': False, 'test_result_base': None}
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_args' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_target' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[4.386s] Level 5:colcon.colcon_core.verb:set package 'trover_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[4.386s] DEBUG:colcon.colcon_core.verb:Building package 'trover_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/elizabeth/MREN203_Trover/build/trover_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/elizabeth/MREN203_Trover/install/trover_bringup', 'merge_install': False, 'path': '/home/elizabeth/MREN203_Trover/src/trover_bringup', 'symlink_install': False, 'test_result_base': None}
+[4.387s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[4.392s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[4.399s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_description' with build type 'ament_cmake'
+[4.403s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/elizabeth/MREN203_Trover/src/trover_description'
+[4.451s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[4.452s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.452s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.469s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_navigation' with build type 'ament_python'
+[4.470s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_navigation', 'ament_prefix_path')
+[4.474s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/ament_prefix_path.ps1'
+[4.487s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/ament_prefix_path.dsv'
+[4.491s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/ament_prefix_path.sh'
+[4.500s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.500s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.550s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_description -- -j2 -l2
+[5.567s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/elizabeth/MREN203_Trover/src/trover_navigation'
+[5.571s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.571s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.602s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_description -- -j2 -l2
+[5.669s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_description
+[6.827s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_description)
+[6.832s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_description
+[6.900s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description' for CMake module files
+[6.906s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description' for CMake config files
+[7.719s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_description', 'cmake_prefix_path')
+[7.720s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.ps1'
+[7.721s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.dsv'
+[7.723s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.sh'
+[7.727s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/bin'
+[7.727s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/lib/pkgconfig/trover_description.pc'
+[7.728s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/lib/python3.10/site-packages'
+[7.729s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/bin'
+[7.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.ps1'
+[7.738s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.dsv'
+[7.743s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.sh'
+[7.748s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.bash'
+[7.756s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.zsh'
+[7.764s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_description/share/colcon-core/packages/trover_description)
+[7.766s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_description)
+[7.767s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description' for CMake module files
+[7.767s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description' for CMake config files
+[7.782s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_description', 'cmake_prefix_path')
+[7.782s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.ps1'
+[7.784s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.dsv'
+[7.787s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/hook/cmake_prefix_path.sh'
+[7.793s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/bin'
+[7.793s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/lib/pkgconfig/trover_description.pc'
+[7.794s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/lib/python3.10/site-packages'
+[7.794s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_description/bin'
+[7.795s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.ps1'
+[7.796s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.dsv'
+[7.809s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.sh'
+[7.816s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.bash'
+[7.817s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_description/share/trover_description/package.zsh'
+[7.820s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_description/share/colcon-core/packages/trover_description)
+[7.825s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_slam' with build type 'ament_python'
+[7.826s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_slam', 'ament_prefix_path')
+[7.828s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/ament_prefix_path.ps1'
+[7.832s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/ament_prefix_path.dsv'
+[7.835s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/ament_prefix_path.sh'
+[7.838s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[7.838s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.899s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_navigation': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_navigation build --build-base /home/elizabeth/MREN203_Trover/build/trover_navigation/build install --record /home/elizabeth/MREN203_Trover/build/trover_navigation/install.log --single-version-externally-managed install_data
+[8.609s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/elizabeth/MREN203_Trover/src/trover_slam'
+[8.609s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[8.609s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[8.794s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation' for CMake module files
+[8.795s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_navigation' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_navigation build --build-base /home/elizabeth/MREN203_Trover/build/trover_navigation/build install --record /home/elizabeth/MREN203_Trover/build/trover_navigation/install.log --single-version-externally-managed install_data
+[8.809s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation' for CMake config files
+[8.840s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation/lib'
+[8.840s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation/bin'
+[8.840s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/pkgconfig/trover_navigation.pc'
+[8.841s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages'
+[8.841s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_navigation', 'pythonpath')
+[8.841s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/pythonpath.ps1'
+[8.847s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/pythonpath.dsv'
+[8.849s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/hook/pythonpath.sh'
+[8.853s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_navigation/bin'
+[8.853s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_navigation)
+[8.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/package.ps1'
+[8.857s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/package.dsv'
+[8.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/package.sh'
+[8.863s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/package.bash'
+[8.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/package.zsh'
+[8.870s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_navigation/share/colcon-core/packages/trover_navigation)
+[8.876s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation' with build type 'ament_python'
+[8.876s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_state_estimation', 'ament_prefix_path')
+[8.877s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/ament_prefix_path.ps1'
+[8.882s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/ament_prefix_path.dsv'
+[8.885s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/ament_prefix_path.sh'
+[8.889s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[8.889s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.517s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation'
+[9.518s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[9.518s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[9.744s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_slam': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_slam build --build-base /home/elizabeth/MREN203_Trover/build/trover_slam/build install --record /home/elizabeth/MREN203_Trover/build/trover_slam/install.log --single-version-externally-managed install_data
+[10.492s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam' for CMake module files
+[10.494s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_slam' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_slam build --build-base /home/elizabeth/MREN203_Trover/build/trover_slam/build install --record /home/elizabeth/MREN203_Trover/build/trover_slam/install.log --single-version-externally-managed install_data
+[10.522s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam' for CMake config files
+[10.562s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam/lib'
+[10.563s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam/bin'
+[10.563s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam/lib/pkgconfig/trover_slam.pc'
+[10.563s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam/lib/python3.10/site-packages'
+[10.563s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_slam', 'pythonpath')
+[10.564s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/pythonpath.ps1'
+[10.565s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/pythonpath.dsv'
+[10.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/hook/pythonpath.sh'
+[10.569s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_slam/bin'
+[10.570s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_slam)
+[10.571s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/package.ps1'
+[10.572s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/package.dsv'
+[10.576s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/package.sh'
+[10.578s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/package.bash'
+[10.580s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_slam/share/trover_slam/package.zsh'
+[10.583s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_slam/share/colcon-core/packages/trover_slam)
+[10.587s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_communication' with build type 'ament_python'
+[10.588s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_communication', 'ament_prefix_path')
+[10.588s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/ament_prefix_path.ps1'
+[10.592s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/ament_prefix_path.dsv'
+[10.594s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/ament_prefix_path.sh'
+[10.597s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[10.597s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.220s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/elizabeth/MREN203_Trover/src/trover_communication'
+[11.227s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[11.227s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.256s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_state_estimation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_state_estimation build --build-base /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build install --record /home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log --single-version-externally-managed install_data
+[12.028s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation' for CMake module files
+[12.030s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_state_estimation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_state_estimation build --build-base /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build install --record /home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log --single-version-externally-managed install_data
+[12.071s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation' for CMake config files
+[12.131s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib'
+[12.131s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/bin'
+[12.132s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/pkgconfig/trover_state_estimation.pc'
+[12.132s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages'
+[12.132s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_state_estimation', 'pythonpath')
+[12.133s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/pythonpath.ps1'
+[12.134s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/pythonpath.dsv'
+[12.136s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/hook/pythonpath.sh'
+[12.142s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/bin'
+[12.142s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_state_estimation)
+[12.143s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/package.ps1'
+[12.144s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/package.dsv'
+[12.147s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/package.sh'
+[12.150s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/package.bash'
+[12.153s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/package.zsh'
+[12.155s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/colcon-core/packages/trover_state_estimation)
+[12.168s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_drivers' with build type 'ament_cmake'
+[12.168s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/elizabeth/MREN203_Trover/src/trover_drivers'
+[12.170s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[12.172s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[12.198s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_communication': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_communication build --build-base /home/elizabeth/MREN203_Trover/build/trover_communication/build install --record /home/elizabeth/MREN203_Trover/build/trover_communication/install.log --single-version-externally-managed install_data
+[12.236s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_drivers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_drivers -- -j2 -l2
+[12.462s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_drivers -- -j2 -l2
+[12.484s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_drivers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_drivers
+[12.556s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_drivers)
+[12.557s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers' for CMake module files
+[12.557s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_drivers
+[12.566s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers' for CMake config files
+[12.566s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_drivers', 'cmake_prefix_path')
+[12.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.ps1'
+[12.568s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.dsv'
+[12.571s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.sh'
+[12.576s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/bin'
+[12.577s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/lib/pkgconfig/trover_drivers.pc'
+[12.578s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/lib/python3.10/site-packages'
+[12.578s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/bin'
+[12.579s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.ps1'
+[12.580s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.dsv'
+[12.583s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.sh'
+[12.585s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.bash'
+[12.587s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.zsh'
+[12.590s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_drivers/share/colcon-core/packages/trover_drivers)
+[12.593s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_drivers)
+[12.593s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers' for CMake module files
+[12.594s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers' for CMake config files
+[12.594s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_drivers', 'cmake_prefix_path')
+[12.595s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.ps1'
+[12.597s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.dsv'
+[12.598s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/hook/cmake_prefix_path.sh'
+[12.602s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/bin'
+[12.603s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/lib/pkgconfig/trover_drivers.pc'
+[12.605s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/lib/python3.10/site-packages'
+[12.605s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_drivers/bin'
+[12.609s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.ps1'
+[12.612s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.dsv'
+[12.619s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.sh'
+[12.625s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.bash'
+[12.627s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.zsh'
+[12.629s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_drivers/share/colcon-core/packages/trover_drivers)
+[12.633s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/elizabeth/MREN203_Trover/src/trover_bringup' with build type 'ament_cmake'
+[12.637s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/elizabeth/MREN203_Trover/src/trover_bringup'
+[12.637s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[12.637s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[12.759s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_bringup': AMENT_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble CMAKE_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_bringup -- -j2 -l2
+[12.928s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_bringup' returned '0': AMENT_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble CMAKE_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_bringup -- -j2 -l2
+[12.939s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_bringup': AMENT_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble CMAKE_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_bringup
+[13.027s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_bringup)
+[13.028s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup' for CMake module files
+[13.034s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup' for CMake config files
+[13.037s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_bringup' returned '0': AMENT_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble CMAKE_PREFIX_PATH=/home/elizabeth/MREN203_Trover/install/trover_description:/home/elizabeth/MREN203_Trover/install/trover_bringup:/home/elizabeth/MREN203_Trover/install/trover_drivers:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_bringup
+[13.040s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_bringup', 'cmake_prefix_path')
+[13.041s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.ps1'
+[13.045s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.dsv'
+[13.049s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.sh'
+[13.056s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/bin'
+[13.056s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/lib/pkgconfig/trover_bringup.pc'
+[13.057s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/lib/python3.10/site-packages'
+[13.058s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/bin'
+[13.058s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.ps1'
+[13.062s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.dsv'
+[13.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.sh'
+[13.070s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.bash'
+[13.074s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.zsh'
+[13.078s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_bringup/share/colcon-core/packages/trover_bringup)
+[13.083s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_bringup)
+[13.084s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup' for CMake module files
+[13.085s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup' for CMake config files
+[13.086s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_bringup', 'cmake_prefix_path')
+[13.086s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.ps1'
+[13.092s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.dsv'
+[13.097s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/hook/cmake_prefix_path.sh'
+[13.100s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/bin'
+[13.101s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/lib/pkgconfig/trover_bringup.pc'
+[13.101s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/lib/python3.10/site-packages'
+[13.103s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_bringup/bin'
+[13.104s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.ps1'
+[13.107s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.dsv'
+[13.111s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.sh'
+[13.115s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.bash'
+[13.118s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_bringup/share/trover_bringup/package.zsh'
+[13.123s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_bringup/share/colcon-core/packages/trover_bringup)
+[13.399s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication' for CMake module files
+[13.405s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_communication' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_communication build --build-base /home/elizabeth/MREN203_Trover/build/trover_communication/build install --record /home/elizabeth/MREN203_Trover/build/trover_communication/install.log --single-version-externally-managed install_data
+[13.424s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication' for CMake config files
+[13.444s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication/lib'
+[13.444s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication/bin'
+[13.445s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication/lib/pkgconfig/trover_communication.pc'
+[13.446s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages'
+[13.446s] Level 1:colcon.colcon_core.shell:create_environment_hook('trover_communication', 'pythonpath')
+[13.446s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/pythonpath.ps1'
+[13.449s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/pythonpath.dsv'
+[13.452s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/hook/pythonpath.sh'
+[13.462s] Level 1:colcon.colcon_core.environment:checking '/home/elizabeth/MREN203_Trover/install/trover_communication/bin'
+[13.464s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trover_communication)
+[13.465s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/package.ps1'
+[13.468s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/package.dsv'
+[13.473s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/package.sh'
+[13.477s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/package.bash'
+[13.480s] INFO:colcon.colcon_core.shell:Creating package script '/home/elizabeth/MREN203_Trover/install/trover_communication/share/trover_communication/package.zsh'
+[13.483s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/elizabeth/MREN203_Trover/install/trover_communication/share/colcon-core/packages/trover_communication)
+[13.486s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[13.487s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[13.488s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[13.489s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[13.582s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[13.583s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[13.583s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[13.661s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[13.663s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/elizabeth/MREN203_Trover/install/local_setup.ps1'
+[13.668s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/elizabeth/MREN203_Trover/install/_local_setup_util_ps1.py'
+[13.679s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/elizabeth/MREN203_Trover/install/setup.ps1'
+[13.689s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/elizabeth/MREN203_Trover/install/local_setup.sh'
+[13.694s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/elizabeth/MREN203_Trover/install/_local_setup_util_sh.py'
+[13.698s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/elizabeth/MREN203_Trover/install/setup.sh'
+[13.712s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/elizabeth/MREN203_Trover/install/local_setup.bash'
+[13.719s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/elizabeth/MREN203_Trover/install/setup.bash'
+[13.726s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/elizabeth/MREN203_Trover/install/local_setup.zsh'
+[13.731s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/elizabeth/MREN203_Trover/install/setup.zsh'

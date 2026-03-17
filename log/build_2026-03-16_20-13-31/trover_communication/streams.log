@@ -1,0 +1,21 @@
+[1.121s] Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_communication': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_communication build --build-base /home/elizabeth/MREN203_Trover/build/trover_communication/build install --record /home/elizabeth/MREN203_Trover/build/trover_communication/install.log --single-version-externally-managed install_data
+[1.695s] running egg_info
+[1.698s] writing ../../build/trover_communication/trover_communication.egg-info/PKG-INFO
+[1.706s] writing dependency_links to ../../build/trover_communication/trover_communication.egg-info/dependency_links.txt
+[1.707s] writing entry points to ../../build/trover_communication/trover_communication.egg-info/entry_points.txt
+[1.707s] writing requirements to ../../build/trover_communication/trover_communication.egg-info/requires.txt
+[1.707s] writing top-level names to ../../build/trover_communication/trover_communication.egg-info/top_level.txt
+[1.709s] reading manifest file '../../build/trover_communication/trover_communication.egg-info/SOURCES.txt'
+[1.714s] writing manifest file '../../build/trover_communication/trover_communication.egg-info/SOURCES.txt'
+[1.716s] running build
+[1.717s] running build_py
+[1.717s] running install
+[1.721s] running install_lib
+[1.725s] running install_data
+[1.725s] running install_egg_info
+[1.729s] removing '/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages/trover_communication-0.0.0-py3.10.egg-info' (and everything under it)
+[1.731s] Copying ../../build/trover_communication/trover_communication.egg-info to /home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages/trover_communication-0.0.0-py3.10.egg-info
+[1.735s] running install_scripts
+[1.773s] Installing trover_serial_comm script to /home/elizabeth/MREN203_Trover/install/trover_communication/lib/trover_communication
+[1.775s] writing list of installed files to '/home/elizabeth/MREN203_Trover/build/trover_communication/install.log'
+[1.838s] Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_communication' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_communication build --build-base /home/elizabeth/MREN203_Trover/build/trover_communication/build install --record /home/elizabeth/MREN203_Trover/build/trover_communication/install.log --single-version-externally-managed install_data

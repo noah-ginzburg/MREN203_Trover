@@ -1,0 +1,1 @@
+Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/elizabeth/MREN203_Trover/src/trover_drivers -DCMAKE_INSTALL_PREFIX=/home/elizabeth/MREN203_Trover/install/trover_drivers

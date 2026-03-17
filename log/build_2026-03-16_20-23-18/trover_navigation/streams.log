@@ -1,0 +1,21 @@
+[2.881s] Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_navigation': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_navigation build --build-base /home/elizabeth/MREN203_Trover/build/trover_navigation/build install --record /home/elizabeth/MREN203_Trover/build/trover_navigation/install.log --single-version-externally-managed install_data
+[3.217s] running egg_info
+[3.220s] writing ../../build/trover_navigation/trover_navigation.egg-info/PKG-INFO
+[3.231s] writing dependency_links to ../../build/trover_navigation/trover_navigation.egg-info/dependency_links.txt
+[3.233s] writing entry points to ../../build/trover_navigation/trover_navigation.egg-info/entry_points.txt
+[3.238s] writing requirements to ../../build/trover_navigation/trover_navigation.egg-info/requires.txt
+[3.241s] writing top-level names to ../../build/trover_navigation/trover_navigation.egg-info/top_level.txt
+[3.279s] reading manifest file '../../build/trover_navigation/trover_navigation.egg-info/SOURCES.txt'
+[3.287s] writing manifest file '../../build/trover_navigation/trover_navigation.egg-info/SOURCES.txt'
+[3.288s] running build
+[3.288s] running build_py
+[3.289s] running install
+[3.289s] running install_lib
+[3.294s] running install_data
+[3.294s] copying config/controller_server.yaml -> /home/elizabeth/MREN203_Trover/install/trover_navigation/share/trover_navigation/config
+[3.297s] running install_egg_info
+[3.301s] removing '/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages/trover_navigation-0.0.0-py3.10.egg-info' (and everything under it)
+[3.303s] Copying ../../build/trover_navigation/trover_navigation.egg-info to /home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages/trover_navigation-0.0.0-py3.10.egg-info
+[3.307s] running install_scripts
+[3.348s] writing list of installed files to '/home/elizabeth/MREN203_Trover/build/trover_navigation/install.log'
+[3.422s] Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_navigation' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_navigation build --build-base /home/elizabeth/MREN203_Trover/build/trover_navigation/build install --record /home/elizabeth/MREN203_Trover/build/trover_navigation/install.log --single-version-externally-managed install_data

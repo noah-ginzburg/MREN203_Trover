@@ -1,0 +1,20 @@
+[1.732s] Invoking command in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_state_estimation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_state_estimation build --build-base /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build install --record /home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log --single-version-externally-managed install_data
+[2.281s] running egg_info
+[2.282s] writing ../../build/trover_state_estimation/trover_state_estimation.egg-info/PKG-INFO
+[2.290s] writing dependency_links to ../../build/trover_state_estimation/trover_state_estimation.egg-info/dependency_links.txt
+[2.302s] writing entry points to ../../build/trover_state_estimation/trover_state_estimation.egg-info/entry_points.txt
+[2.313s] writing requirements to ../../build/trover_state_estimation/trover_state_estimation.egg-info/requires.txt
+[2.331s] writing top-level names to ../../build/trover_state_estimation/trover_state_estimation.egg-info/top_level.txt
+[2.340s] reading manifest file '../../build/trover_state_estimation/trover_state_estimation.egg-info/SOURCES.txt'
+[2.372s] writing manifest file '../../build/trover_state_estimation/trover_state_estimation.egg-info/SOURCES.txt'
+[2.373s] running build
+[2.373s] running build_py
+[2.373s] running install
+[2.373s] running install_lib
+[2.389s] running install_data
+[2.389s] running install_egg_info
+[2.390s] removing '/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation-0.0.0-py3.10.egg-info' (and everything under it)
+[2.390s] Copying ../../build/trover_state_estimation/trover_state_estimation.egg-info to /home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation-0.0.0-py3.10.egg-info
+[2.423s] running install_scripts
+[2.471s] writing list of installed files to '/home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log'
+[2.533s] Invoked command in '/home/elizabeth/MREN203_Trover/src/trover_state_estimation' returned '0': PYTHONPATH=/home/elizabeth/MREN203_Trover/build/trover_state_estimation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/trover_state_estimation build --build-base /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build install --record /home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log --single-version-externally-managed install_data

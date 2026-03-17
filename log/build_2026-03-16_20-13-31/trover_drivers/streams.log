@@ -1,0 +1,20 @@
+[0.058s] Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_drivers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_drivers -- -j2 -l2
+[0.234s] Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --build /home/elizabeth/MREN203_Trover/build/trover_drivers -- -j2 -l2
+[0.241s] Invoking command in '/home/elizabeth/MREN203_Trover/build/trover_drivers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_drivers
+[0.265s] -- Install configuration: ""
+[0.265s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/ament_index/resource_index/package_run_dependencies/trover_drivers
+[0.267s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/ament_index/resource_index/parent_prefix_path/trover_drivers
+[0.268s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/environment/ament_prefix_path.sh
+[0.270s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/environment/ament_prefix_path.dsv
+[0.270s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/environment/path.sh
+[0.270s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/environment/path.dsv
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/local_setup.bash
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/local_setup.sh
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/local_setup.zsh
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/local_setup.dsv
+[0.271s] -- Installing: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.dsv
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/ament_index/resource_index/packages/trover_drivers
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/cmake/trover_driversConfig.cmake
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/cmake/trover_driversConfig-version.cmake
+[0.271s] -- Up-to-date: /home/elizabeth/MREN203_Trover/install/trover_drivers/share/trover_drivers/package.xml
+[0.277s] Invoked command in '/home/elizabeth/MREN203_Trover/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/elizabeth/MREN203_Trover/install/trover_state_estimation:/home/elizabeth/MREN203_Trover/install/trover_slam:/home/elizabeth/MREN203_Trover/install/trover_navigation:/home/elizabeth/MREN203_Trover/install/trover_communication:/opt/ros/humble /usr/bin/cmake --install /home/elizabeth/MREN203_Trover/build/trover_drivers
