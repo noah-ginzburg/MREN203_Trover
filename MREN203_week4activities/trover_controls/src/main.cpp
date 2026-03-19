@@ -112,28 +112,45 @@ void SendSensorData(int left_ticks, int right_ticks, float gyro_z);
 VelocityCommand ReceiveVelocityCommand();
 void ReadImu();
 
-WheelSpeeds Drive(VelocityCommand cmd)
+// This function applies PWM inputs (u_L and u_R) to the right and left wheels
+void driveVehicle(short u_L, short u_R)
 {
-  /*
-  TODO:
-  1. switch the pins based on the direction we want to drive, i.e. if
-  cmd.lin_vel_x > or < 0
-  2. use cmd to calculate vl, vr,
-  3. PID per wheel
-  4. apply the pwm commands
-  5. Read new wheelspeed
-  */
+  // LEFT WHEEL
+  if (u_L < 0) // If the controller calculated a negative input...
+  {
+    digitalWrite(I3, HIGH); // Drive backward (left wheels)
+    digitalWrite(I4, LOW);  // Drive backward (left wheels)
 
-  WheelSpeeds new_wheelspeed = ReadWheelSpeeds(cmd);
+    analogWrite(EB, -u_L); // Write left motors command
+  }
+  else // the controller calculated a positive input
+  {
+    digitalWrite(I3, LOW);  // Drive forward (left wheels)
+    digitalWrite(I4, HIGH); // Drive forward (left wheels)
 
-  return new_wheelspeed;
-  // Disclaimer: I have no idea if this will work
+    analogWrite(EB, u_L); // Write left motors command
+  }
+
+  // RIGHT WHEEL
+  if (u_R < 0) // If the controller calculated a negative input...
+  {
+    digitalWrite(I1, LOW);  // Drive backward (right wheels)
+    digitalWrite(I2, HIGH); // Drive backward (right wheels)
+
+    analogWrite(EA, -u_R); // Write right motors command
+  }
+  else // the controller calculated a positive input
+  {
+    digitalWrite(I1, HIGH); // Drive forward (right wheels)
+    digitalWrite(I2, LOW);  // Drive forward (right wheels)
+
+    analogWrite(EA, u_R); // Write right motors command
+  }
 }
 
 /*
   Serial communicaiton
 */
-
 void SendSensorData(int left_ticks, int right_ticks, float gyro_z)
 {
   // Send: "leftTicks,rightTicks,gyroZ\n"
@@ -257,6 +274,38 @@ short PI_controller(double e_now, double e_int, double k_P, double k_I)
     u = -255;
   }
   return u;
+}
+
+void ReadImu()
+{
+  // Read from the accelerometer
+  if (IMU.accelerationAvailable())
+  {
+    IMU.readAcceleration(a_x, a_y, a_z);
+
+    // Print the accelerometer measurements to the Serial Monitor
+    // Serial.print(a_x);
+    // Serial.print("\t");
+    // Serial.print(a_y);
+    // Serial.print("\t");
+    // Serial.print(a_z);
+    // Serial.print(" g\t\t");
+  }
+
+  // Read from the gyroscope
+  if (IMU.gyroscopeAvailable())
+  {
+    IMU.readGyroscope(omega_x, omega_y, omega_z);
+    omega_z = omega_z - GYRO_Z_BIAS;
+
+    // Print the gyroscope measurements to the Serial Monitor
+    // Serial.print(omega_x);
+    // Serial.print("\t");
+    // Serial.print(omega_y);
+    // Serial.print("\t");
+    // Serial.print(omega_z);
+    // Serial.print(" deg/s\n");
+  }
 }
 
 void setup()
@@ -386,96 +435,6 @@ void loop()
     // Serial.print("\n");
 
     // Test this
-    // SendSensorData(encoder_ticks_L, encoder_ticks_R, omega_z);
-  }
-}
-
-void forward(double vL, double vR, double t, VelocityCommand desired_speed)
-{
-  digitalWrite(I1, HIGH);
-  digitalWrite(I2, LOW);
-  digitalWrite(I3, LOW);
-  digitalWrite(I4, HIGH);
-
-  v_des = desired_speed.lin_vel_x;
-  w_des = desired_speed.ang_vel_z;
-
-  vLd = v_des - ((L * w_des) / 2);
-  vRd = v_des + ((L * w_des) / 2);
-
-  ///////////////////////////////
-  double errorL = vLd - vL;
-  double errorR = vRd - vR;
-  I_errorL = I_errorL + errorL;
-  I_errorR = I_errorR + errorR;
-  d_errorL = (l_pwm - l_pwm_b) / t;
-  d_errorR = (r_pwm - r_pwm_b) / t;
-
-  // Serial.print("current: ");
-  // Serial.print(vL);
-  // Serial.print("  desired: ");
-  // Serial.print(vLd);
-  // Serial.print("  error: ");
-  // Serial.println(errorL);
-
-  l_pwm = l_pwm + PI_controller(errorL, I_errorL, kp,
-                                ki); // current pwm + change in pwm
-  r_pwm = r_pwm + PI_controller(errorR, I_errorR, kp,
-                                ki); // current pwm + change in pwm
-  if (l_pwm > 255)
-  {
-    l_pwm = 255;
-  }
-  else if (l_pwm < -255)
-  {
-    l_pwm = -255;
-  }
-  if (r_pwm > 255)
-  {
-    r_pwm = 255;
-  }
-  else if (r_pwm < -255)
-  {
-    r_pwm = -255;
-  }
-  // analogWrite(EA, PI_controller(errorL, I_errorL, kp, ki, vL));
-  // analogWrite(EB, PI_controller(errorR, I_errorR, kp, ki, vR));
-  // Serial.print(millis());
-  // Serial.print(",");
-  // Serial.println(l_pwm);
-
-  analogWrite(EA, l_pwm);
-  analogWrite(EB, r_pwm);
-}
-
-void ReadImu()
-{
-  // Read from the accelerometer
-  if (IMU.accelerationAvailable())
-  {
-    IMU.readAcceleration(a_x, a_y, a_z);
-
-    // Print the accelerometer measurements to the Serial Monitor
-    // Serial.print(a_x);
-    // Serial.print("\t");
-    // Serial.print(a_y);
-    // Serial.print("\t");
-    // Serial.print(a_z);
-    // Serial.print(" g\t\t");
-  }
-
-  // Read from the gyroscope
-  if (IMU.gyroscopeAvailable())
-  {
-    IMU.readGyroscope(omega_x, omega_y, omega_z);
-    omega_z = omega_z - GYRO_Z_BIAS;
-
-    // Print the gyroscope measurements to the Serial Monitor
-    // Serial.print(omega_x);
-    // Serial.print("\t");
-    // Serial.print(omega_y);
-    // Serial.print("\t");
-    // Serial.print(omega_z);
-    // Serial.print(" deg/s\n");
+    SendSensorData(100, 300, 0.487);
   }
 }
