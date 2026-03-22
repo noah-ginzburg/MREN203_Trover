@@ -1,0 +1,20 @@
+[0.604s] Invoking command in '/home/noah/mren_ws/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_drivers -- -j22 -l22
+[0.696s] Invoked command in '/home/noah/mren_ws/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_drivers -- -j22 -l22
+[0.697s] Invoking command in '/home/noah/mren_ws/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_drivers
+[0.705s] -- Install configuration: ""
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/ament_index/resource_index/package_run_dependencies/trover_drivers
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/ament_index/resource_index/parent_prefix_path/trover_drivers
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/environment/ament_prefix_path.sh
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/environment/ament_prefix_path.dsv
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/environment/path.sh
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/environment/path.dsv
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/local_setup.bash
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/local_setup.sh
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/local_setup.zsh
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/local_setup.dsv
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/package.dsv
+[0.706s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/ament_index/resource_index/packages/trover_drivers
+[0.707s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/cmake/trover_driversConfig.cmake
+[0.707s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/cmake/trover_driversConfig-version.cmake
+[0.707s] -- Up-to-date: /home/noah/mren_ws/install/trover_drivers/share/trover_drivers/package.xml
+[0.708s] Invoked command in '/home/noah/mren_ws/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_drivers

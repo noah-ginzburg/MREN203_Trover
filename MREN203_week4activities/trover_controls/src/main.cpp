@@ -22,10 +22,6 @@ const int TPR = 3000;
 // Wheel radius [m]
 const double RHO = 0.0625;
 
-// Counter to keep track of encoder ticks [integer]
-volatile long encoder_ticksL = 0;
-volatile long encoder_ticksR = 0;
-
 // Vehicle track [m]
 const double ELL = 0.2775;
 
@@ -194,12 +190,12 @@ void decodeEncoderTicksL()
   if (digitalRead(SIGNAL_B) == LOW)
   {
     // SIGNAL_A leads SIGNAL_B, so count one way
-    encoder_ticksL--;
+    encoder_ticks_L--;
   }
   else
   {
     // SIGNAL_B leads SIGNAL_A, so count the other way
-    encoder_ticksL++;
+    encoder_ticks_L++;
   }
 }
 
@@ -208,12 +204,12 @@ void decodeEncoderTicksR()
   if (digitalRead(SIGNAL_D) == LOW)
   {
     // SIGNAL_A leads SIGNAL_B, so count one way
-    encoder_ticksR--;
+    encoder_ticks_R--;
   }
   else
   {
     // SIGNAL_B leads SIGNAL_A, so count the other way
-    encoder_ticksR++;
+    encoder_ticks_R++;
   }
 }
 
@@ -374,14 +370,10 @@ void loop()
   if (t_now - t_last >= T)
   {
     VelocityCommand vel_desired = ReceiveVelocityCommand();
-    // v_d = vel_desired.lin_vel_x;
-    // omega_d= vel_desired.ang_vel_z;
+    v_d = vel_desired.lin_vel_x;
+    omega_d = vel_desired.ang_vel_z;
 
     ReadImu();
-
-    // Set the desired vehicle speed and turning rate
-    v_d = 0.5;     // [m/s]
-    omega_d = 0.0; // [rad/s]
 
     // Estimate the rotational speed of each wheel [rad/s]
     omega_L = compute_wheel_rate(encoder_ticks_L, (double)(t_now - t_last));
