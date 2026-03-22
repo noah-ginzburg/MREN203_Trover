@@ -1,0 +1,6 @@
+Invoking command in '/home/noah/mren_ws/build/trover_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/noah/mren_ws/src/trover_description -DCMAKE_INSTALL_PREFIX=/home/noah/mren_ws/install/trover_description
+Invoked command in '/home/noah/mren_ws/build/trover_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/noah/mren_ws/src/trover_description -DCMAKE_INSTALL_PREFIX=/home/noah/mren_ws/install/trover_description
+Invoking command in '/home/noah/mren_ws/build/trover_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_description -- -j22 -l22
+Invoked command in '/home/noah/mren_ws/build/trover_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_description -- -j22 -l22
+Invoking command in '/home/noah/mren_ws/build/trover_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_description
+Invoked command in '/home/noah/mren_ws/build/trover_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_description

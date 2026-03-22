@@ -1,0 +1,8 @@
+Noah Tailscale IP:
+100.117.179.91
+
+Pi Tailscale IP:    
+100.65.254.33
+
+Pi Regular IP:
+192.168.50.XXX - need to run angry pirate to see what IP it is

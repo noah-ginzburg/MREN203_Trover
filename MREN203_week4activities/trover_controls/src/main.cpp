@@ -167,6 +167,8 @@ VelocityCommand ReceiveVelocityCommand()
 
   if (Serial.available() > 0)
   {
+    Serial.println("serial available");
+
     String data = Serial.readStringUntil('\n');
 
     // Parse "0.5,0.3\n"
@@ -177,6 +179,11 @@ VelocityCommand ReceiveVelocityCommand()
 
     cmd.lin_vel_x = lin_vel_x;
     cmd.ang_vel_z = ang_vel_z;
+
+    Serial.print("lin: ");
+    Serial.print(lin_vel_x);
+    Serial.print(", Ang: ");
+    Serial.println(ang_vel_z);
   }
 
   return cmd;
@@ -360,6 +367,8 @@ void setup()
 
 void loop()
 {
+  t_now = millis();
+
   // put your main code here, to run repeatedly:
   // Perform control update every T milliseconds
   if (t_now - t_last >= T)
@@ -435,6 +444,8 @@ void loop()
     // Serial.print("\n");
 
     // Test this
-    SendSensorData(100, 300, 0.487);
+    //SendSensorData(100, 300, 0.487);
+
+    t_now = t_last;
   }
 }
