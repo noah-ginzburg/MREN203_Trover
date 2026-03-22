@@ -18,8 +18,8 @@ class Trover_Serial_Node(Node):
         port = self.find_arduino_port()
         
         if port is None:
-            self.get_logger().warn('Arduino not auto-detected, trying /dev/ttyUSB0')
-            port = '/dev/ttyUSB0'
+            self.get_logger().warn('Arduino not auto-detected, trying /dev/ttyACM0')
+            port = '/dev/ttyACM0'
         
         # Setup serial connection
         try:
@@ -50,8 +50,10 @@ class Trover_Serial_Node(Node):
         """Auto-detect Arduino port"""
         ports = serial.tools.list_ports.comports()
         for port in ports:
+            print(port)
+
             # Look for Arduino or common USB-serial chips
-            if any(keyword in port.description.lower() for keyword in ['arduino', 'ch340', 'cp210', 'ftdi']):
+            if any(keyword in port.description.lower() for keyword in ['arduino', 'ch340', 'cp210', 'ftdi', 'atmel', 'atmega']):
                 self.get_logger().info(f'Found Arduino at: {port.device}')
                 return port.device
         return None
