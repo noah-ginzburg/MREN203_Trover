@@ -51,11 +51,11 @@ double v_L = 0.0;
 double v_R = 0.0;
 
 // Variables to store vehicle speed and turning rate
-double v = 0.0;     // [m/s]
+double v = 0;       // [m/s]
 double omega = 0.0; // [rad/s]
 
 // Variables to store desired vehicle speed and turning rate
-double v_d = 0.0;     // [m/s]
+double v_d = 0.5;     // [m/s]
 double omega_d = 0.0; // [rad/s]
 
 // Variable to store desired wheel speeds [m/s]
@@ -161,26 +161,23 @@ VelocityCommand ReceiveVelocityCommand()
 {
   VelocityCommand cmd = {0.0, 0.0};
 
-  if (Serial.available() > 0)
-  {
-    Serial.println("serial available");
+  // Serial.println("serial available");
 
-    String data = Serial.readStringUntil('\n');
+  String data = Serial.readStringUntil('\n');
 
-    // Parse "0.5,0.3\n"
-    int commaIndex = data.indexOf(',');
+  // Parse "0.5,0.3\n"
+  int commaIndex = data.indexOf(',');
 
-    float lin_vel_x = data.substring(0, commaIndex).toFloat();
-    float ang_vel_z = data.substring(commaIndex + 1).toFloat();
+  float lin_vel_x = data.substring(0, commaIndex).toFloat();
+  float ang_vel_z = data.substring(commaIndex + 1).toFloat();
 
-    cmd.lin_vel_x = lin_vel_x;
-    cmd.ang_vel_z = ang_vel_z;
+  cmd.lin_vel_x = lin_vel_x;
+  cmd.ang_vel_z = ang_vel_z;
 
-    Serial.print("lin: ");
-    Serial.print(lin_vel_x);
-    Serial.print(", Ang: ");
-    Serial.println(ang_vel_z);
-  }
+  // Serial.print("lin: ");
+  // Serial.print(lin_vel_x);
+  // Serial.print(", Ang: ");
+  // Serial.println(ang_vel_z);
 
   return cmd;
 }
@@ -369,12 +366,16 @@ void loop()
   // Perform control update every T milliseconds
   if (t_now - t_last >= T)
   {
-    VelocityCommand vel_desired = ReceiveVelocityCommand();
-    v_d = 1.0;
-    omega_d = vel_desired.ang_vel_z;
 
-    // Serial.print("v_d: ");
-    // Serial.println(v_d);
+    if (Serial.available() > 0)
+    {
+      VelocityCommand vel_desired = ReceiveVelocityCommand();
+      v_d = vel_desired.lin_vel_x;
+      omega_d = vel_desired.ang_vel_z;
+    }
+
+    Serial.print("v_d: ");
+    Serial.println(v_d);
 
     ReadImu();
 
@@ -428,7 +429,9 @@ void loop()
     u_R = PI_controller(e_R, e_Rint, KP, KI);
 
     // Serial.print("Ul: ");
-    // Serial.println(u_L);
+    // Serial.print(u_L);
+    // Serial.print("Ur: ");
+    // Serial.println(u_R);
 
     // Drive the vehicle
     driveVehicle(u_L, u_R);
@@ -447,8 +450,7 @@ void loop()
     // Serial.print(u_R);
     // Serial.print("\n");
 
-    // Test this
-    // SendSensorData(100, 300, 0.487);
+    SendSensorData(100, 300, 0.487);
 
     t_now = t_last;
   }
