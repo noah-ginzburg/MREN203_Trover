@@ -81,11 +81,15 @@ class Trover_Serial_Node(Node):
                     ###########RECEIVE OUR INFO##############    
                     vx = float(values[0])
                     omega = float(values[1])
+
+                    #Add the IMU HERE once it's calibrated
+
                     self.publish_odom(vx, omega)
                     #########################################
-                    self.get_logger().info(f"vx: {vx}, omega: {omega}")
+                    #self.get_logger().info(f"vx: {vx}, omega: {omega}")
                 except (ValueError, IndexError) as e:
-                    self.get_logger().warn(f"Parse error: {e}")
+                    test = 2
+                    #self.get_logger().warn(f"Parse error: {e}")
                     
         except serial.SerialException as e:
             self.get_logger().error(f"Serial error: {e}")
