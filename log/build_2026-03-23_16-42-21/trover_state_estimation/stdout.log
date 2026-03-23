@@ -1,0 +1,38 @@
+running egg_info
+creating ../../build/trover_state_estimation/trover_state_estimation.egg-info
+writing ../../build/trover_state_estimation/trover_state_estimation.egg-info/PKG-INFO
+writing dependency_links to ../../build/trover_state_estimation/trover_state_estimation.egg-info/dependency_links.txt
+writing entry points to ../../build/trover_state_estimation/trover_state_estimation.egg-info/entry_points.txt
+writing requirements to ../../build/trover_state_estimation/trover_state_estimation.egg-info/requires.txt
+writing top-level names to ../../build/trover_state_estimation/trover_state_estimation.egg-info/top_level.txt
+writing manifest file '../../build/trover_state_estimation/trover_state_estimation.egg-info/SOURCES.txt'
+reading manifest file '../../build/trover_state_estimation/trover_state_estimation.egg-info/SOURCES.txt'
+writing manifest file '../../build/trover_state_estimation/trover_state_estimation.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build
+creating /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build/lib
+creating /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build/lib/trover_state_estimation
+copying trover_state_estimation/__init__.py -> /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build/lib/trover_state_estimation
+running install
+running install_lib
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation
+copying /home/elizabeth/MREN203_Trover/build/trover_state_estimation/build/lib/trover_state_estimation/__init__.py -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation
+byte-compiling /home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/ament_index
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/ament_index/resource_index
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/ament_index/resource_index/packages
+copying resource/trover_state_estimation -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/ament_index/resource_index/packages
+copying package.xml -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/launch
+copying launch/global_localization.launch.py -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/launch
+copying launch/local_localization.launch.py -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/launch
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/config
+copying config/ekf.yaml -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/config
+copying config/amcl.yaml -> /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/config
+creating /home/elizabeth/MREN203_Trover/install/trover_state_estimation/share/trover_state_estimation/maps
+running install_egg_info
+Copying ../../build/trover_state_estimation/trover_state_estimation.egg-info to /home/elizabeth/MREN203_Trover/install/trover_state_estimation/lib/python3.10/site-packages/trover_state_estimation-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/elizabeth/MREN203_Trover/build/trover_state_estimation/install.log'
