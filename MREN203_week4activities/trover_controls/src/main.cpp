@@ -176,10 +176,10 @@ VelocityCommand ReceiveVelocityCommand()
     cmd.lin_vel_x = lin_vel_x;
     cmd.ang_vel_z = ang_vel_z;
 
-    // Serial.print("lin: ");
-    // Serial.print(lin_vel_x);
-    // Serial.print(", Ang: ");
-    // Serial.println(ang_vel_z);
+    Serial.print("lin: ");
+    Serial.print(lin_vel_x);
+    Serial.print(", Ang: ");
+    Serial.println(ang_vel_z);
   }
 
   return cmd;
@@ -370,8 +370,11 @@ void loop()
   if (t_now - t_last >= T)
   {
     VelocityCommand vel_desired = ReceiveVelocityCommand();
-    v_d = vel_desired.lin_vel_x;
+    v_d = 1.0;
     omega_d = vel_desired.ang_vel_z;
+
+    // Serial.print("v_d: ");
+    // Serial.println(v_d);
 
     ReadImu();
 
@@ -386,6 +389,9 @@ void loop()
     // Compute the speed of the vehicle [m/s]
     v = compute_vehicle_speed(v_L, v_R);
 
+    // Serial.print("v: ");
+    // Serial.println(v);
+
     // Compute the turning rate of the vehicle [rad/s]
     omega = compute_vehicle_rate(v_L, v_R);
 
@@ -399,6 +405,9 @@ void loop()
     // Compute the desired wheel speeds from v_d and omega_d
     v_Ld = compute_L_wheel_speed(v_d, omega_d);
     v_Rd = compute_R_wheel_speed(v_d, omega_d);
+
+    // Serial.print("v_Ld: ");
+    // Serial.println(v_Ld);
 
     // Compute errors
     e_L = v_Ld - v_L;
@@ -417,6 +426,9 @@ void loop()
     // Compute control signals using PI controller
     u_L = PI_controller(e_L, e_Lint, KP, KI);
     u_R = PI_controller(e_R, e_Rint, KP, KI);
+
+    // Serial.print("Ul: ");
+    // Serial.println(u_L);
 
     // Drive the vehicle
     driveVehicle(u_L, u_R);
