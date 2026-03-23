@@ -55,7 +55,7 @@ double v = 0;       // [m/s]
 double omega = 0.0; // [rad/s]
 
 // Variables to store desired vehicle speed and turning rate
-double v_d = 0.5;     // [m/s]
+double v_d = 0.3;     // [m/s]
 double omega_d = 0.0; // [rad/s]
 
 // Variable to store desired wheel speeds [m/s]
@@ -200,13 +200,11 @@ void decodeEncoderTicksR()
 {
   if (digitalRead(SIGNAL_D) == LOW)
   {
-    // SIGNAL_A leads SIGNAL_B, so count one way
-    encoder_ticks_R--;
+    encoder_ticks_R++;
   }
   else
   {
-    // SIGNAL_B leads SIGNAL_A, so count the other way
-    encoder_ticks_R++;
+    encoder_ticks_R--;
   }
 }
 
@@ -317,6 +315,7 @@ void setup()
   while (!Serial)
     delay(10);
 
+  pinMode(0, INPUT_PULLUP);
   pinMode(EA, OUTPUT);
   pinMode(I1, OUTPUT);
   pinMode(I2, OUTPUT);
@@ -374,8 +373,8 @@ void loop()
       omega_d = vel_desired.ang_vel_z;
     }
 
-    Serial.print("v_d: ");
-    Serial.println(v_d);
+    // Serial.print("v_d: ");
+    // Serial.println(v_d);
 
     ReadImu();
 
@@ -407,8 +406,10 @@ void loop()
     v_Ld = compute_L_wheel_speed(v_d, omega_d);
     v_Rd = compute_R_wheel_speed(v_d, omega_d);
 
-    // Serial.print("v_Ld: ");
-    // Serial.println(v_Ld);
+    Serial.print("v_L: ");
+    Serial.print(v_L);
+    Serial.print(", v_R: ");
+    Serial.println(v_R);
 
     // Compute errors
     e_L = v_Ld - v_L;
@@ -450,7 +451,7 @@ void loop()
     // Serial.print(u_R);
     // Serial.print("\n");
 
-    SendSensorData(100, 300, 0.487);
+    // SendSensorData(v, omega, omega_z);
 
     t_now = t_last;
   }
