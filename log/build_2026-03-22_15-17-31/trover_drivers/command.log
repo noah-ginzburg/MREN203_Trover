@@ -1,6 +1,0 @@
-Invoking command in '/home/noah/mren_ws/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/noah/mren_ws/src/trover_drivers -DCMAKE_INSTALL_PREFIX=/home/noah/mren_ws/install/trover_drivers
-Invoked command in '/home/noah/mren_ws/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/noah/mren_ws/src/trover_drivers -DCMAKE_INSTALL_PREFIX=/home/noah/mren_ws/install/trover_drivers
-Invoking command in '/home/noah/mren_ws/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_drivers -- -j22 -l22
-Invoked command in '/home/noah/mren_ws/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/noah/mren_ws/build/trover_drivers -- -j22 -l22
-Invoking command in '/home/noah/mren_ws/build/trover_drivers': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_drivers
-Invoked command in '/home/noah/mren_ws/build/trover_drivers' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/noah/mren_ws/build/trover_drivers
