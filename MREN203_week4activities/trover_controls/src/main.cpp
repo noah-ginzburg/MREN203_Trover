@@ -103,8 +103,8 @@ void forward(double vL, double vR, double t, VelocityCommand desired_speed);
 short PI_controller(double e_now, double e_int, double k_P, double k_I);
 WheelSpeeds ReadWheelSpeeds(VelocityCommand cmd);
 WheelSpeeds Drive(VelocityCommand cmd);
+void SendSensorData(double v, double omega, float gyro_z);
 void driveVehicle(short u_L, short u_R);
-void SendSensorData(int left_ticks, int right_ticks, float gyro_z);
 VelocityCommand ReceiveVelocityCommand();
 void ReadImu();
 
@@ -147,12 +147,12 @@ void driveVehicle(short u_L, short u_R)
 /*
   Serial communicaiton
 */
-void SendSensorData(int left_ticks, int right_ticks, float gyro_z)
+void SendSensorData(double v, double omega, float gyro_z)
 {
   // Send: "leftTicks,rightTicks,gyroZ\n"
-  Serial.print(left_ticks);
+  Serial.print(v);
   Serial.print(",");
-  Serial.print(right_ticks);
+  Serial.print(omega);
   Serial.print(",");
   Serial.println(gyro_z); // println adds \n
 }
@@ -395,6 +395,8 @@ void loop()
     // Compute the turning rate of the vehicle [rad/s]
     omega = compute_vehicle_rate(v_L, v_R);
 
+    SendSensorData(v, omega, omega_z);
+
     // Record the current time [ms]
     t_last = t_now;
 
@@ -406,10 +408,10 @@ void loop()
     v_Ld = compute_L_wheel_speed(v_d, omega_d);
     v_Rd = compute_R_wheel_speed(v_d, omega_d);
 
-    Serial.print("v_L: ");
-    Serial.print(v_L);
-    Serial.print(", v_R: ");
-    Serial.println(v_R);
+    // Serial.print("v_L: ");
+    // Serial.print(v_L);
+    // Serial.print(", v_R: ");
+    // Serial.println(v_R);
 
     // Compute errors
     e_L = v_Ld - v_L;
@@ -450,8 +452,6 @@ void loop()
     // Serial.print("u_R:");
     // Serial.print(u_R);
     // Serial.print("\n");
-
-    // SendSensorData(v, omega, omega_z);
 
     t_now = t_last;
   }
