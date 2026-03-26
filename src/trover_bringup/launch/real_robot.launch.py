@@ -85,13 +85,13 @@ def generate_launch_description():
     )
 
     # LiDARs
-    # laser_driver = Node(
-    #     package="rplidar_ros",
-    #     executable="rplidar_node",
-    #     name="rplidar_node_1",
-    #     parameters=[os.path.join(pkg_bringup, "config", "rplidar_a1_1.yaml")],
-    #     output="screen"
-    # )
+    laser_driver = Node(
+        package='rplidar_ros',
+        executable='rplidar_node',
+        name='rplidar_node',
+        parameters=[os.path.join(pkg_bringup, 'config', 'rplidar_a1_1.yaml')],
+        output='screen',
+    )
 
     # Keyboard teleop
     keyboard_teleop = Node(
@@ -151,6 +151,7 @@ def generate_launch_description():
         robot_state_publisher,
         joint_state_publisher,
         serial_comm,
+        laser_driver,
         keyboard_teleop,
         local_localization,
         slam_toolbox,
