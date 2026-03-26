@@ -81,13 +81,13 @@ class Trover_Serial_Node(Node):
                     values = decoded.split(',')
                     ###########RECEIVE OUR INFO##############    
                     vx = float(values[0])
-                    omega = float(values[1])
+                    omega = float(values[2])
 
                     #Add the IMU HERE once it's calibrated
 
                     self.publish_odom(vx, omega)
                     #########################################
-                    #self.get_logger().info(f"vx: {vx}, omega: {omega}")
+                    self.get_logger().info(f"vx: {vx}, omega: {omega}")
                 except (ValueError, IndexError) as e:
                     test = 2
                     #self.get_logger().warn(f"Parse error: {e}")
