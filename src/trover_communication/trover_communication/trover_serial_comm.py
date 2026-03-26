@@ -15,11 +15,12 @@ class Trover_Serial_Node(Node):
         
         # Try to auto-detect Arduino port
         self.serial_port = None
-        port = self.find_arduino_port()
+        port = None
         
         if port is None:
             self.get_logger().warn('Arduino not auto-detected, trying /dev/ttyACM0')
             port = '/dev/ttyACM0'
+
         
         # Setup serial connection
         try:
