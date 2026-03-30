@@ -1,6 +1,6 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 50.0
+    frequency: 20.0
     two_d_mode: true
     publish_tf: true
 
@@ -14,18 +14,17 @@ ekf_filter_node:
     odom0_config:
       [false, false, false,    # position (x, y, z) 
        false, false, false,    # orientation (roll, pitch, yaw) 
-       true,  true,  false,    # linear velocity (vx, vy, vz) 
-       false, false, true,     # angular velocity (vroll, vpitch, vyaw)
+       true,  false,  false,    # linear velocity (vx, vy, vz) 
+       false, false, false,     # angular velocity (vroll, vpitch, vyaw)
        false, false, false]    # linear acceleration (ax, ay, az) 
 
-    # IMU sensor
     imu0: /imu/data
-    # Same config matrix format as above
     imu0_config:
-      [false, false, false,    # position - IMU doesn't provide position
-       false, false, true,     # orientation - fuse yaw from IMU
-       false, false, false,    # linear velocity - IMU doesn't provide velocity
-       false, false, true,     # angular velocity - fuse vyaw from IMU
-       false, false, false]    # linear acceleration - not using (can cause drift)
+      [false, false, false,   # position (x, y, z)
+       false, false, false,   # orientation (roll, pitch, yaw)
+       false, false, false,   # linear velocity (vx, vy, vz)
+       false, false, true,    # angular velocity (only yaw rate)
+       false, false, false]   # linear acceleration
 
-    imu0_remove_gravitational_acceleration: true
+    imu0_differential: false
+    imu0_remove_gravitational_acceleration: false

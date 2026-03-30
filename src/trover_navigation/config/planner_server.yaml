@@ -9,7 +9,7 @@ planner_server:
       tolerance: 0.20
       downsample_costmap: false
       downsampling_factor: 1
-      allow_unknown: false
+      allow_unknown: true
       max_iterations: 500000
       max_on_approach_iterations: 500
       max_planning_time: 1.0
@@ -53,7 +53,10 @@ global_costmap:
       robot_radius: 0.22
       resolution: 0.05
       track_unknown_space: false
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      width: 20
+      height: 20
+      rolling_window: true
+      plugins: ["obstacle_layer", "inflation_layer"]
       
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
@@ -75,7 +78,7 @@ global_costmap:
           obstacle_max_range: 4.5
           obstacle_min_range: 0.0
           inf_is_valid: false
-          clearing_threshold: 0.48
+          clearing_threshold: 0.02
           marking_threshold: 0.52
       
       inflation_layer:
