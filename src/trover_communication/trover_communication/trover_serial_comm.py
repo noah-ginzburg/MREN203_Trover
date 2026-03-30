@@ -87,7 +87,7 @@ class Trover_Serial_Node(Node):
 
                     self.publish_odom(vx, omega)
                     #########################################
-                    self.get_logger().info(f"vx: {vx}, omega: {omega}")
+                    #self.get_logger().info(f"vx: {vx}, omega: {omega}")
                 except (ValueError, IndexError) as e:
                     test = 2
                     #self.get_logger().warn(f"Parse error: {e}")
