@@ -29,8 +29,8 @@ const double ELL = 0.2775;
 const int T = 100;
 
 // Controller gains (use the same values for both wheels)
-const double KP = 200.0; // Proportional gain
-const double KI = 100.0; // Integral gain
+const double KP = 250.0; // Proportional gain
+const double KI = 150.0; // Integral gain
 
 /* VARIABLE DECLARATIONS */
 
@@ -55,7 +55,7 @@ double v = 0;       // [m/s]
 double omega = 0.0; // [rad/s]
 
 // Variables to store desired vehicle speed and turning rate
-double v_d = 0.3;     // [m/s]
+double v_d = 0.0;     // [m/s]
 double omega_d = 0.0; // [rad/s]
 
 // Variable to store desired wheel speeds [m/s]
@@ -65,6 +65,10 @@ double v_Rd = 0.0;
 // Counters for milliseconds during interval
 long t_now = 0;
 long t_last = 0;
+long t_last_cmd = 0;
+
+// Watchdog: zero commands if no cmd_vel received within this many ms
+const int CMD_TIMEOUT_MS = 500;
 
 // Variables to store errors for controller
 double e_L = 0.0;
@@ -161,23 +165,18 @@ VelocityCommand ReceiveVelocityCommand()
 {
   VelocityCommand cmd = {0.0, 0.0};
 
-  // Serial.println("serial available");
+  char buf[32];
+  int len = Serial.readBytesUntil('\n', buf, sizeof(buf) - 1);
+  buf[len] = '\0';
 
-  String data = Serial.readStringUntil('\n');
+  // Parse "0.5,0.3"
+  char *comma = strchr(buf, ',');
+  if (comma == NULL)
+    return cmd;
 
-  // Parse "0.5,0.3\n"
-  int commaIndex = data.indexOf(',');
-
-  float lin_vel_x = data.substring(0, commaIndex).toFloat();
-  float ang_vel_z = data.substring(commaIndex + 1).toFloat();
-
-  cmd.lin_vel_x = lin_vel_x;
-  cmd.ang_vel_z = ang_vel_z;
-
-  // Serial.print("lin: ");
-  // Serial.print(lin_vel_x);
-  // Serial.print(", Ang: ");
-  // Serial.println(ang_vel_z);
+  *comma = '\0';
+  cmd.lin_vel_x = atof(buf);
+  cmd.ang_vel_z = atof(comma + 1);
 
   return cmd;
 }
@@ -371,6 +370,14 @@ void loop()
       VelocityCommand vel_desired = ReceiveVelocityCommand();
       v_d = vel_desired.lin_vel_x;
       omega_d = vel_desired.ang_vel_z;
+      t_last_cmd = t_now;
+    }
+
+    // Watchdog: zero commands if no cmd_vel received recently
+    if (t_now - t_last_cmd > CMD_TIMEOUT_MS)
+    {
+      v_d = 0.0;
+      omega_d = 0.0;
     }
 
     // Serial.print("v_d: ");

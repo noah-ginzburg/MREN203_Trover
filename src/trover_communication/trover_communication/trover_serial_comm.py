@@ -8,20 +8,13 @@ from std_msgs.msg import Header
 from sensor_msgs.msg import Imu
 import math
 import serial
-import serial.tools.list_ports
-import math
 
 class Trover_Serial_Node(Node):
     def __init__(self):
         super().__init__('Trover_Comm_Node')
-        
-        # Try to auto-detect Arduino port
+
         self.serial_port = None
-        port = None
-        
-        if port is None:
-            self.get_logger().warn('Arduino not auto-detected, trying /dev/ttyACM0')
-            port = '/dev/ttyACM0'
+        port = '/dev/ttyACM0'
 
         
         # Setup serial connection
@@ -50,18 +43,8 @@ class Trover_Serial_Node(Node):
         self.vx = 0.0
         self.omega = 0.0
         self.gyro_z = 0.0
-    
-    def find_arduino_port(self):
-        """Auto-detect Arduino port"""
-        ports = serial.tools.list_ports.comports()
-        for port in ports:
-            print(port)
-
-            # Look for Arduino or common USB-serial chips
-            if any(keyword in port.description.lower() for keyword in ['arduino', 'ch340', 'cp210', 'ftdi', 'atmel', 'atmega']):
-                self.get_logger().info(f'Found Arduino at: {port.device}')
-                return port.device
-        return None
+        self._last_data_time = None
+        self._data_timeout = 0.5  # seconds — zero velocities if no fresh data
     
     def timer_callback(self):
         """Runs every time the timer triggers"""
@@ -89,6 +72,7 @@ class Trover_Serial_Node(Node):
                     self.omega = float(values[1])
                     self.gyro_z = float(values[2]) * (math.pi/180)
                     #########################################
+                    self._last_data_time = self.get_clock().now()
                 except (ValueError, IndexError) as e:
                     pass
                     #self.get_logger().warn(f"Parse error: {e}")
@@ -97,7 +81,14 @@ class Trover_Serial_Node(Node):
             self.get_logger().error(f"Serial error: {e}")
             self.serial_port = None  # Mark as disconnected
 
-        # Always publish odom every tick so the EKF is never starved
+        # Zero velocities if Arduino has gone silent
+        if self._last_data_time is not None:
+            elapsed = (self.get_clock().now() - self._last_data_time).nanoseconds / 1e9
+            if elapsed > self._data_timeout:
+                self.vx = 0.0
+                self.omega = 0.0
+                self.gyro_z = 0.0
+
         self.publish_odom(self.vx, self.omega)
         self.publish_imu(self.gyro_z)
     
