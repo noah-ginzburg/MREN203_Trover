@@ -376,8 +376,8 @@ void loop()
     // Watchdog: zero commands if no cmd_vel received recently
     if (t_now - t_last_cmd > CMD_TIMEOUT_MS)
     {
-      v_d = 0.0;
-      omega_d = 0.0;
+      // v_d = 0.0;
+      // omega_d = 0.0;
     }
 
     // Serial.print("v_d: ");
