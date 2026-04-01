@@ -4,17 +4,20 @@
       
       <PipelineSequence name="NavigateWithReplanning">
         
-        <RateController hz="1.0">
+        <RateController hz="0.5">
           <RecoveryNode number_of_retries="1" name="ComputePathToPose">
             <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
           </RecoveryNode>
         </RateController>
-        
-        <RecoveryNode number_of_retries="1" name="FollowPath">
-          <FollowPath path="{path}" controller_id="FollowPath"/>
-          <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-        </RecoveryNode>
+
+        <ReactiveFallback name="FollowPathFallback">
+          <GoalUpdated/>
+          <RecoveryNode number_of_retries="1" name="FollowPath">
+            <FollowPath path="{path}" controller_id="FollowPath"/>
+            <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+          </RecoveryNode>
+        </ReactiveFallback>
         
       </PipelineSequence>
       
