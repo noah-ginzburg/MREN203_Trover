@@ -46,11 +46,11 @@ global_costmap:
   global_costmap:
     ros__parameters:
       update_frequency: 2.0
-      publish_frequency: 1.0
+      publish_frequency: 2.0
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: true
-      robot_radius: 0.22
+      robot_radius: 0.182
       resolution: 0.05
       track_unknown_space: false
       width: 20
@@ -84,6 +84,6 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 2.5
-        inflation_radius: 0.5
+        inflation_radius: 0.35
       
       always_send_full_costmap: true
