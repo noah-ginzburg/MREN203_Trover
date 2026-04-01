@@ -157,7 +157,7 @@ class Trover_Serial_Node(Node):
         # Send over serial
         try:
             self.serial_port.write(data_string.encode('utf-8'))
-            #self.get_logger().info(f'Sent: {data_string.strip()}')
+            self.get_logger().info(f'Sent: {data_string.strip()}')
         except serial.SerialException as e:
             self.get_logger().error(f'Serial write error: {e}')
             self.serial_port = None  # Mark as disconnected
