@@ -45,6 +45,8 @@ class Trover_Serial_Node(Node):
         self.gyro_z = 0.0
         self._last_data_time = None
         self._data_timeout = 0.5  # seconds — zero velocities if no fresh data
+        self._last_cmd_linear = 0.0
+        self._last_cmd_angular = 0.0
     
     def timer_callback(self):
         """Runs every time the timer triggers"""
@@ -91,6 +93,15 @@ class Trover_Serial_Node(Node):
 
         self.publish_odom(self.vx, self.omega)
         self.publish_imu(self.gyro_z)
+
+        # Send last known command every tick so the Arduino watchdog stays alive
+        if self.serial_port is not None and self.serial_port.is_open:
+            data_string = f"{self._last_cmd_linear},{self._last_cmd_angular}\n"
+            try:
+                self.serial_port.write(data_string.encode('utf-8'))
+            except serial.SerialException as e:
+                self.get_logger().error(f'Serial write error: {e}')
+                self.serial_port = None
     
     def publish_odom(self, vx, omega):
         """Publish odometry message"""
@@ -141,26 +152,9 @@ class Trover_Serial_Node(Node):
         self.imu_publisher.publish(msg)
 
     def cmd_vel_callback(self, msg):
-        """Called whenever a cmd_vel message is received"""
-        # Check if serial port exists
-        if self.serial_port is None or not self.serial_port.is_open:
-            self.get_logger().warn('Serial port not available, cannot send cmd_vel')
-            return
-        
-        # Extract velocities
-        linear_x = -msg.linear.x
-        angular_z = -msg.angular.z
-        
-        # Format data to send (customize this for your protocol)
-        data_string = f"{linear_x},{angular_z}\n"
-        
-        # Send over serial
-        try:
-            self.serial_port.write(data_string.encode('utf-8'))
-            self.get_logger().info(f'Sent: {data_string.strip()}')
-        except serial.SerialException as e:
-            self.get_logger().error(f'Serial write error: {e}')
-            self.serial_port = None  # Mark as disconnected
+        """Called whenever a cmd_vel message is received — just update stored command."""
+        self._last_cmd_linear = -msg.linear.x
+        self._last_cmd_angular = msg.angular.z
     
     def destroy_node(self):
         """Clean up when node shuts down"""

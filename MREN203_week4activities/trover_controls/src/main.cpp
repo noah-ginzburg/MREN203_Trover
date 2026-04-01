@@ -371,13 +371,22 @@ void loop()
       v_d = vel_desired.lin_vel_x;
       omega_d = vel_desired.ang_vel_z;
       t_last_cmd = t_now;
+
+      // Reset integrals when commanded to stop so we start fresh next move
+      if (v_d == 0.0 && omega_d == 0.0)
+      {
+        e_Lint = 0.0;
+        e_Rint = 0.0;
+      }
     }
 
     // Watchdog: zero commands if no cmd_vel received recently
     if (t_now - t_last_cmd > CMD_TIMEOUT_MS)
     {
-      // v_d = 0.0;
-      // omega_d = 0.0;
+      v_d = 0.0;
+      omega_d = 0.0;
+      e_Lint = 0.0;
+      e_Rint = 0.0;
     }
 
     // Serial.print("v_d: ");
@@ -424,19 +433,17 @@ void loop()
     e_L = v_Ld - v_L;
     e_R = v_Rd - v_R;
 
-    // Integrate errors with anti-windup
-    if (abs(u_L) < 255)
-    {
-      e_Lint += e_L;
-    }
-    if (abs(u_R) < 255)
-    {
-      e_Rint += e_R;
-    }
+    // Integrate errors
+    e_Lint += e_L;
+    e_Rint += e_R;
 
     // Compute control signals using PI controller
     u_L = PI_controller(e_L, e_Lint, KP, KI);
     u_R = PI_controller(e_R, e_Rint, KP, KI);
+
+    // Anti-windup: undo last integration step if output saturated
+    if (abs(u_L) >= 255) e_Lint -= e_L;
+    if (abs(u_R) >= 255) e_Rint -= e_R;
 
     // Serial.print("Ul: ");
     // Serial.print(u_L);
