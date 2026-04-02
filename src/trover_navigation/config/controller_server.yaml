@@ -2,6 +2,7 @@ controller_server:
   ros__parameters:
     use_sim_time: false
     controller_frequency: 10.0
+    transform_tolerance: 0.5
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
@@ -28,11 +29,11 @@ controller_server:
       # Trajectory generator
       trajectory_generator_name: "dwb_plugins::StandardTrajectoryGenerator"
 
-      min_vel_x: 0.2
+      min_vel_x: -0.4
       min_speed_xy: 0.0
       max_speed_xy: 0.4
       min_speed_theta: 0.2
-      max_vel_x: 0.5
+      max_vel_x: 0.4
       max_vel_theta: 1.0
 
       acc_lim_x: 0.2
@@ -74,12 +75,12 @@ local_costmap:
       width: 3
       height: 3
       resolution: 0.05
-      robot_radius: 0.182
+      robot_radius: 0.19
       plugins: ["obstacle_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.2
+        cost_scaling_factor: 2.0
+        inflation_radius: 0.5
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: true
@@ -93,4 +94,6 @@ local_costmap:
           data_type: "LaserScan"
           raytrace_max_range: 3.0
           obstacle_max_range: 2.5
+          observation_persistence: 1.0   
+
       always_send_full_costmap: true

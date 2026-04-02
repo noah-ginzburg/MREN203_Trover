@@ -20,10 +20,10 @@ planner_server:
       analytic_expansion_ratio: 3.5
       analytic_expansion_max_length: 3.0
       
-      reverse_penalty: 1.0 
-      change_penalty: 0.0
+      reverse_penalty: 0.5 
+      change_penalty: 0.2
       non_straight_penalty: 1.0
-      cost_penalty: 2.0
+      cost_penalty: 7.0
       retrospective_penalty: 0.015
       
       lookup_table_size: 20.0
@@ -33,7 +33,7 @@ planner_server:
       downsample_obstacle_heuristic: true
       smooth_path: true
       
-      cost_travel_multiplier: 1.5
+      cost_travel_multiplier: 1.7
       use_final_approach_orientation: false
       
       smoother:
@@ -50,11 +50,11 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: false
-      robot_radius: 0.182
+      robot_radius: 0.19
       resolution: 0.05
       track_unknown_space: false
-      width: 20
-      height: 20
+      width: 30
+      height: 30
       rolling_window: true
       plugins: ["obstacle_layer", "inflation_layer"]
       
@@ -80,10 +80,11 @@ global_costmap:
           inf_is_valid: false
           clearing_threshold: 0.02
           marking_threshold: 0.52
+          observation_persistence: 1.0   
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.5
-        inflation_radius: 0.35
+        cost_scaling_factor: 1.5
+        inflation_radius: 0.6
       
       always_send_full_costmap: true

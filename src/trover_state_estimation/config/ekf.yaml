@@ -1,6 +1,6 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 20.0
+    frequency: 7.0
     two_d_mode: true
     publish_tf: true
 
@@ -15,7 +15,7 @@ ekf_filter_node:
       [false, false, false,    # position (x, y, z) 
        false, false, false,    # orientation (roll, pitch, yaw) 
        true,  false,  false,    # linear velocity (vx, vy, vz) 
-       false, false, false,     # angular velocity (vroll, vpitch, vyaw)
+       false, false, true,     # angular velocity (vroll, vpitch, vyaw)
        false, false, false]    # linear acceleration (ax, ay, az) 
 
     imu0: /imu/data
